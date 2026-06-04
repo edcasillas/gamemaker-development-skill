@@ -1,13 +1,12 @@
 # GameMaker Development Skill
 
-Codex skill for practical GameMaker game development: inspecting and editing
+Agent skill for practical GameMaker game development: inspecting and editing
 `.yyp` projects, reasoning about GameMaker resources and GML, validating
 behavior, automating maintenance, debugging runtime issues, packaging builds,
 publishing releases, and sharing reusable utilities.
 
 YoYoGames `gm-cli`, ResourceTool, GameMaker Manual lookup, and
-`edcasillas/gamemaker-common-utils` are tools this skill can use. They are not
-the identity or full scope of the skill.
+`edcasillas/gamemaker-common-utils` are tools this skill can use.
 
 This repository is meant to be used as a standalone skill repository and can be included in project repos as a Git submodule.
 
@@ -56,7 +55,9 @@ vendor/gamemaker-common-utils
 
 The proven editable workflow is submodule plus local resource-folder symlinks. GameMaker keeps local `.yyp` resource paths, while edits made through the IDE land in the submodule. See `references/common-utils.md` before installing, migrating, linking, or adding shared resources.
 
-## Optional Companion Skill
+## Optional Companion Skills
+
+### Game Maker Migration Skill
 
 For legacy GM4/GM5/GMS1.4 preservation, migration reasoning, MIDI/audio conversion for web export, imported Drag and Drop cleanup, obsolete function cleanup, resource collision handling, and browser migration validation, use the optional companion skill:
 
@@ -76,7 +77,7 @@ Or install it as a Git submodule:
 git submodule add https://github.com/edcasillas/gamemaker-migration-skill.git .agents/skills/gamemaker-migration-assistant
 ```
 
-Both skills are independent. Install only the one that matches the project work, or install both when a project needs modern GameMaker CLI work and legacy migration guidance.
+### Game Design Reverse Engineering Skill (in progress)
 
 ## Notes For Maintainers
 
