@@ -39,7 +39,7 @@ Bundled supporting material lives in:
 
 ## Optional Common Utils Toolbox
 
-Common Utils is optional. Use it when a GameMaker project should consume or contribute reusable modules such as Core helpers, DrawingParameters, portable Logging, EventBus, or InGameNotifications.
+Common Utils is optional. Use it when a GameMaker project should consume or contribute reusable modules such as Core helpers, DrawingParameters, portable Logging, EventBus, InGameNotifications, or InputHub.
 
 Repository:
 

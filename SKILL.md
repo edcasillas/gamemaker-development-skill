@@ -46,7 +46,7 @@ edits, validation, automation, package, and publish workflows.
 
 ## Optional Common Utils Toolbox
 
-For shared reusable GameMaker code, use `edcasillas/gamemaker-common-utils` as an optional toolbox. It is intended for reusable modules such as portable logging, event bus, drawing helpers, and in-game notifications.
+For shared reusable GameMaker code, use `edcasillas/gamemaker-common-utils` as an optional toolbox. It is intended for reusable modules such as portable logging, event bus, drawing helpers, in-game notifications, and reusable input helpers.
 
 Toolbox repository:
 

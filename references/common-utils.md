@@ -48,6 +48,11 @@ If GameMaker reports `Could not find a project for the resource file`, ensure
 the source repository includes `gamemaker-common-utils.yyp` as an ancestor of
 the `.yy` resource.
 
+## Naming Policy
+
+New shared public resources and APIs use `gmcu_` as the first token in the
+name. For objects, put the prefix before `o`, such as `gmcu_o_input_hub`.
+
 ## Current Modules
 
 Import or register modules in this dependency order:
@@ -57,6 +62,7 @@ Import or register modules in this dependency order:
 3. `Logging`
 4. `EventBus`
 5. `InGameNotifications`
+6. `InputHub`
 
 ### Core
 
@@ -122,6 +128,28 @@ Resource folders:
 Provides `InGameNotificationSettings` and `show_notification`. It registers a
 notification handler for Logging so dev-build `log_error` and `log_exception`
 calls can show visual notifications.
+
+### InputHub
+
+Resource folders:
+
+- `scripts/gmcu_input_hub_events`
+- `scripts/gmcu_gamepad_buttons_mapping`
+- `objects/gmcu_o_input_hub`
+
+Provides:
+
+- `GMCU_EVENT_GAMEPAD_BUTTON_PRESSED`
+- `GMCU_EVENT_GAMEPAD_BUTTON_RELEASED`
+- `GMCU_DIRECTION_ANGLE`
+- `gmcu_o_input_hub.gmcu_get_direction()`
+- `gmcu_o_input_hub.gmcu_get_four_way_direction()`
+- `gmcu_o_input_hub.gmcu_has_connected_gamepad()`
+- `gmcu_o_input_hub.gmcu_gamepad_button_pressed(_button)`
+- `gmcu_o_input_hub.gmcu_gamepad_button_released(_button)`
+
+Place one `gmcu_o_input_hub` instance in the first room that should initialize
+input. The object is persistent and deletes duplicate instances.
 
 ## Migrating An Existing Resource
 
@@ -196,7 +224,6 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include input hub, buttons/reusable UI, labels
-and localization helpers, transitions, timed actions, universal cursor,
-GameAnalytics wrappers, GlobalStats.io wrappers, HTML5 extensions, and optional
-`.yymps` packaging.
+Future Common Utils candidates include localization helpers, universal cursor,
+buttons/reusable UI, labels, transitions, timed actions, GameAnalytics wrappers,
+GlobalStats.io wrappers, HTML5 extensions, and optional `.yymps` packaging.
