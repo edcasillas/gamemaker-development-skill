@@ -1,6 +1,6 @@
 # GameMaker Development Skill
 
-Codex skill for current GameMaker command-line development with YoYoGames `gm-cli`, including `.yyp` compile/run/package workflows, ResourceTool project editing, GameMaker Manual lookup, and GX.Games packaging or publishing workflows.
+Codex skill for current GameMaker command-line development with YoYoGames `gm-cli`, including `.yyp` compile/run/package workflows, ResourceTool project editing, GameMaker Manual lookup, GX.Games packaging or publishing workflows, and optional shared-resource workflows through `edcasillas/gamemaker-common-utils`.
 
 This repository is meant to be used as a standalone skill repository and can be included in project repos as a Git submodule.
 
@@ -13,6 +13,7 @@ This repository is meant to be used as a standalone skill repository and can be 
 - Running ResourceTool MCP for AI-agent integration.
 - Looking up current GameMaker Manual pages from the terminal.
 - Packaging and publishing GX.Games builds when explicitly requested.
+- Installing, linking, and contributing optional reusable utilities through the `gamemaker-common-utils` submodule workflow.
 
 ## Using It
 
@@ -27,7 +28,27 @@ That file contains the skill frontmatter and the workflow instructions Codex use
 Bundled supporting material lives in:
 
 - `references/` for captured `gm-cli` and ResourceTool command references.
+- `references/common-utils.md` for the optional Common Utils toolbox catalog and submodule/symlink workflow.
+- `scripts/link-common-utils-resource.sh` for replacing a local resource folder with a symlink into `vendor/gamemaker-common-utils`.
 - `agents/` for UI metadata.
+
+## Optional Common Utils Toolbox
+
+Common Utils is optional. Use it when a GameMaker project should consume or contribute reusable modules such as Core helpers, DrawingParameters, portable Logging, EventBus, or InGameNotifications.
+
+Repository:
+
+```text
+https://github.com/edcasillas/gamemaker-common-utils.git
+```
+
+Recommended consumer path:
+
+```text
+vendor/gamemaker-common-utils
+```
+
+The proven editable workflow is submodule plus local resource-folder symlinks. GameMaker keeps local `.yyp` resource paths, while edits made through the IDE land in the submodule. See `references/common-utils.md` before installing, migrating, linking, or adding shared resources.
 
 ## Optional Companion Skill
 

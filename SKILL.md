@@ -1,6 +1,6 @@
 ---
 name: gamemaker-development
-description: Use when Codex needs to develop, inspect, edit, validate, compile, run, package, automate, or publish GameMaker projects with YoYoGames gm-cli, including installing gm-cli, choosing npx vs global install, using gm-cli resourcetool or MCP, querying the GameMaker Manual, running builds from a .yyp project, and documenting command-line GameMaker workflows.
+description: Use when Codex needs to develop, inspect, edit, validate, compile, run, package, automate, publish, or share reusable resources in GameMaker projects, including YoYoGames gm-cli, ResourceTool, GameMaker Manual lookup, .yyp builds, and optional gamemaker-common-utils submodule workflows.
 ---
 
 # GameMaker Development
@@ -9,7 +9,7 @@ Use this skill for command-line GameMaker development with YoYoGames `gm-cli`.
 
 This skill is standalone. It can complement migration-specific skills, but it does not require them.
 
-Use this skill when the task needs current GameMaker CLI tooling, build automation, manual lookup, project editing, or publish/package workflows.
+Use this skill when the task needs current GameMaker CLI tooling, build automation, manual lookup, project editing, publish/package workflows, or reusable shared GameMaker utilities.
 
 ## Optional Companion Skill
 
@@ -35,6 +35,26 @@ git submodule add https://github.com/edcasillas/gamemaker-migration-skill.git .a
 
 The companion skill is optional. If it is not installed, continue using this skill for current `.yyp`, `gm-cli`, ResourceTool, manual lookup, package, and publish workflows.
 
+## Optional Common Utils Toolbox
+
+For shared reusable GameMaker code, use `edcasillas/gamemaker-common-utils` as an optional toolbox. It is intended for reusable modules such as portable logging, event bus, drawing helpers, and in-game notifications.
+
+Toolbox repository:
+
+```text
+https://github.com/edcasillas/gamemaker-common-utils.git
+```
+
+Recommended consumer path:
+
+```text
+vendor/gamemaker-common-utils
+```
+
+Read `references/common-utils.md` when the task mentions Common Utils, shared utils, reusable GameMaker scripts, submodule-based utilities, EventBus, portable logging, reusable UI, in-game notifications, or contributing a utility back to the shared toolbox.
+
+This toolbox is optional. Continue using this skill for normal `gm-cli`, ResourceTool, manual lookup, package, publish, and project-editing workflows even when Common Utils is not installed.
+
 ## First Steps
 
 1. Identify the active GameMaker project file:
@@ -55,6 +75,7 @@ If a required local tool is missing, do not silently switch to a weaker workflow
 Read `references/gm-cli.md` before running non-trivial `gm-cli` commands or documenting exact syntax.
 Read `references/resource-tool.md` before using `gm-cli resourcetool`, ResourceTool scripts, or ResourceTool MCP.
 Read `references/html5-console-triage.md` before diagnosing browser console noise from a GameMaker HTML5 runner or exported HTML build.
+Read `references/common-utils.md` before installing, linking, migrating, or contributing shared GameMaker resources through `edcasillas/gamemaker-common-utils`.
 
 ## Command Selection
 
