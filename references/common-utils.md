@@ -63,6 +63,7 @@ Import or register modules in this dependency order:
 4. `EventBus`
 5. `InGameNotifications`
 6. `InputHub`
+7. `Localization`
 
 ### Core
 
@@ -151,6 +152,23 @@ Provides:
 Place one `gmcu_o_input_hub` instance in the first room that should initialize
 input. The object is persistent and deletes duplicate instances.
 
+### Localization
+
+Resource folders:
+
+- `scripts/gmcu_localization_init`
+- `scripts/gmcu_localization_macros`
+- `scripts/gmcu_localization_t`
+
+Provides:
+
+- `GMCU_LOCALIZATION_IS_INITIALIZED`
+- `gmcu_localization_init(_lang_code = undefined, _csv_file_name = undefined)`
+- `gmcu_localization_t(_str)`
+
+Uses `global.gmcu_language` and `global.gmcu_loc_map`. Translation CSV file
+names and content stay in the consuming project.
+
 ## Migrating An Existing Resource
 
 1. Close GameMaker.
@@ -224,6 +242,6 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include localization helpers, universal cursor,
-buttons/reusable UI, labels, transitions, timed actions, GameAnalytics wrappers,
-GlobalStats.io wrappers, HTML5 extensions, and optional `.yymps` packaging.
+Future Common Utils candidates include universal cursor, buttons/reusable UI,
+labels, transitions, timed actions, GameAnalytics wrappers, GlobalStats.io
+wrappers, HTML5 extensions, and optional `.yymps` packaging.
