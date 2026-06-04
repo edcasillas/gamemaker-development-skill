@@ -37,6 +37,19 @@ may need a separate local-run signal if it wants three labels such as:
 - explicit DevBuild config: `GM_version + "-dev"`
 - local IDE runner: `GM_version + "-local"`
 
+When documenting or replicating this pattern in another project, make the dev
+signal explicit:
+
+```gml
+#macro IS_DEV_BUILD false
+#macro DevBuild:IS_DEV_BUILD true
+```
+
+Then document how to select the `DevBuild` configuration in the IDE before
+running, compiling, or packaging. Keep service credentials, god mode, crash
+handlers, and build labels behind deliberate config-specific macros rather than
+behind the fact that a runner URL is local.
+
 ## Recommended Fix Shape
 
 - Prefer bypassing `file_exists()` in known dev-only HTML5 paths when the
