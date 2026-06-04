@@ -54,6 +54,7 @@ If a required local tool is missing, do not silently switch to a weaker workflow
 
 Read `references/gm-cli.md` before running non-trivial `gm-cli` commands or documenting exact syntax.
 Read `references/resource-tool.md` before using `gm-cli resourcetool`, ResourceTool scripts, or ResourceTool MCP.
+Read `references/html5-console-triage.md` before diagnosing browser console noise from a GameMaker HTML5 runner or exported HTML build.
 
 ## Command Selection
 
@@ -137,3 +138,17 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - Treat login/access keys and GX.Games publish state as user-controlled credentials and external state.
 - When a command fails, capture the exact command, working directory, tool version, and error output before changing project files.
 - If a fix depends on current GameMaker behavior, verify with `gm-cli manual` or official docs rather than relying on memory.
+
+## HTML5 Console Triage
+
+- Distinguish IDE runner URLs such as `http://localhost:<port>/` from exported
+  build folders such as `Builds/html`; they may not load the same injected
+  files.
+- For Chrome console 404s from `fantasma.js` or another generated runner file,
+  check whether GML called `file_exists()` on a missing included file or
+  browser-stored save file. On HTML5, that can produce a visible `HEAD` request
+  before the normal fallback path runs.
+- Preserve release build-number behavior when suppressing dev-runner noise:
+  generated release builds may include a build-number file, `IS_DEV_BUILD` is an
+  explicit config/macro signal, and a GameMaker IDE run is not automatically a
+  DevBuild.
