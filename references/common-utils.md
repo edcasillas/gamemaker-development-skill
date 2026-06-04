@@ -64,6 +64,8 @@ Import or register modules in this dependency order:
 5. `InGameNotifications`
 6. `InputHub`
 7. `Localization`
+8. `LayeredGUI`
+9. `UniversalCursor`
 
 ### Core
 
@@ -169,6 +171,50 @@ Provides:
 Uses `global.gmcu_language` and `global.gmcu_loc_map`. Translation CSV file
 names and content stay in the consuming project.
 
+### LayeredGUI
+
+Resource folders:
+
+- `objects/gmcu_o_layered_gui_manager`
+- `scripts/gmcu_layered_gui_subscribe`
+- `scripts/gmcu_layered_gui_unsubscribe`
+
+Provides:
+
+- `gmcu_o_layered_gui_manager`
+- `gmcu_layered_gui_subscribe(_priority)`
+- `gmcu_layered_gui_unsubscribe()`
+
+Subscribers define:
+
+```gml
+function on_draw_gui() {
+}
+```
+
+`LayeredGUI` depends on `Core`, `Drawing`, and `Logging`.
+
+### UniversalCursor
+
+Resource folders:
+
+- `objects/gmcu_o_universal_cursor`
+- `scripts/gmcu_universal_cursor_show`
+- `scripts/gmcu_universal_cursor_hide`
+- `scripts/gmcu_universal_cursor_subscribe`
+- `scripts/gmcu_universal_cursor_unsubscribe`
+
+Provides:
+
+- `gmcu_o_universal_cursor`
+- `gmcu_universal_cursor_show(_sprite_index)`
+- `gmcu_universal_cursor_hide(_restore_system_cursor = true)`
+- `gmcu_universal_cursor_subscribe()`
+- `gmcu_universal_cursor_unsubscribe()`
+
+`UniversalCursor` depends on `Core`, `Drawing`, `Logging`, `LayeredGUI`, and
+`InputHub`. Cursor sprites remain consumer-owned.
+
 ## Migrating An Existing Resource
 
 1. Close GameMaker.
@@ -242,6 +288,6 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include universal cursor, buttons/reusable UI,
-labels, transitions, timed actions, GameAnalytics wrappers, GlobalStats.io
+Future Common Utils candidates include buttons/reusable UI, labels, transitions,
+timed actions, debug/dev menu helpers, GameAnalytics wrappers, GlobalStats.io
 wrappers, HTML5 extensions, and optional `.yymps` packaging.
