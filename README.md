@@ -1,18 +1,24 @@
 # GameMaker Development Skill
 
-Codex skill for current GameMaker command-line development with YoYoGames `gm-cli`, including `.yyp` compile/run/package workflows, ResourceTool project editing, GameMaker Manual lookup, GX.Games packaging or publishing workflows, and optional shared-resource workflows through `edcasillas/gamemaker-common-utils`.
+Codex skill for practical GameMaker game development: inspecting and editing
+`.yyp` projects, reasoning about GameMaker resources and GML, validating
+behavior, automating maintenance, debugging runtime issues, packaging builds,
+publishing releases, and sharing reusable utilities.
+
+YoYoGames `gm-cli`, ResourceTool, GameMaker Manual lookup, and
+`edcasillas/gamemaker-common-utils` are tools this skill can use. They are not
+the identity or full scope of the skill.
 
 This repository is meant to be used as a standalone skill repository and can be included in project repos as a Git submodule.
 
 ## What This Skill Covers
 
-- Installing and invoking `@gamemaker/gm-cli`.
-- Choosing one-off `npx` use versus global installs.
-- Compiling, running, and packaging modern GameMaker `.yyp` projects.
-- Using ResourceTool for structured project inspection and targeted edits.
-- Running ResourceTool MCP for AI-agent integration.
-- Looking up current GameMaker Manual pages from the terminal.
-- Packaging and publishing GX.Games builds when explicitly requested.
+- Understanding modern GameMaker project structure and resource ownership.
+- Making focused GML, object-event, script, room, option, extension, and datafile changes.
+- Choosing between direct file edits, ResourceTool, `gm-cli`, GameMaker Manual lookup, and IDE validation.
+- Compiling, running, packaging, and publishing modern `.yyp` projects when requested.
+- Debugging HTML5 runner/export issues and other runtime symptoms.
+- Automating repeatable GameMaker project maintenance tasks.
 - Installing, linking, and contributing optional reusable utilities through the `gamemaker-common-utils` submodule workflow.
 
 ## Using It
@@ -27,7 +33,7 @@ That file contains the skill frontmatter and the workflow instructions Codex use
 
 Bundled supporting material lives in:
 
-- `references/` for captured `gm-cli` and ResourceTool command references.
+- `references/` for captured tool references and focused GameMaker workflows.
 - `references/common-utils.md` for the optional Common Utils toolbox catalog and submodule/symlink workflow.
 - `scripts/link-common-utils-resource.sh` for replacing a local resource folder with a symlink into `vendor/gamemaker-common-utils`.
 - `agents/` for UI metadata.

@@ -1,15 +1,22 @@
 ---
 name: gamemaker-development
-description: Use when Codex needs to develop, inspect, edit, validate, compile, run, package, automate, publish, or share reusable resources in GameMaker projects, including YoYoGames gm-cli, ResourceTool, GameMaker Manual lookup, .yyp builds, and optional gamemaker-common-utils submodule workflows.
+description: "Use when Codex needs to develop GameMaker games or tooling: inspect and edit .yyp projects, reason about GameMaker resources and GML, validate behavior, compile/run/package/publish builds, debug HTML5/runtime issues, automate project maintenance, or share reusable resources. Uses tools such as gm-cli, ResourceTool, GameMaker Manual lookup, and optional gamemaker-common-utils workflows."
 ---
 
 # GameMaker Development
 
-Use this skill for command-line GameMaker development with YoYoGames `gm-cli`.
+Use this skill for practical GameMaker game development. It should help an
+agent understand project structure, resource ownership, GML code, editor/runtime
+constraints, build workflows, and reusable utility patterns.
 
 This skill is standalone. It can complement migration-specific skills, but it does not require them.
 
-Use this skill when the task needs current GameMaker CLI tooling, build automation, manual lookup, project editing, publish/package workflows, or reusable shared GameMaker utilities.
+Use this skill when the task involves building, debugging, refactoring,
+documenting, validating, automating, packaging, publishing, or extending a
+GameMaker project.
+
+`gm-cli`, ResourceTool, GameMaker Manual lookup, and Common Utils are tools this
+skill may use. They are not the scope of the skill by themselves.
 
 ## Optional Companion Skill
 
@@ -33,7 +40,9 @@ Or install it as a Git submodule:
 git submodule add https://github.com/edcasillas/gamemaker-migration-skill.git .agents/skills/gamemaker-migration-assistant
 ```
 
-The companion skill is optional. If it is not installed, continue using this skill for current `.yyp`, `gm-cli`, ResourceTool, manual lookup, package, and publish workflows.
+The companion skill is optional. If it is not installed, continue using this
+skill for current GameMaker project work, including `.yyp` inspection, GML/resource
+edits, validation, automation, package, and publish workflows.
 
 ## Optional Common Utils Toolbox
 
@@ -53,22 +62,32 @@ vendor/gamemaker-common-utils
 
 Read `references/common-utils.md` when the task mentions Common Utils, shared utils, reusable GameMaker scripts, submodule-based utilities, EventBus, portable logging, reusable UI, in-game notifications, or contributing a utility back to the shared toolbox.
 
-This toolbox is optional. Continue using this skill for normal `gm-cli`, ResourceTool, manual lookup, package, publish, and project-editing workflows even when Common Utils is not installed.
+This toolbox is optional. Continue using this skill for normal GameMaker
+development even when Common Utils is not installed.
 
 ## First Steps
 
 1. Identify the active GameMaker project file:
    - Modern GameMaker projects usually use `.yyp`.
    - Legacy GMS1.4 projects usually use `.project.gmx`; `gm-cli` may not apply directly unless the project has been migrated to a supported `.yyp` workflow.
-2. Check local tool availability before installing:
+2. Inspect the project shape before changing resources:
+   - Read the `.yyp` and relevant resource folders.
+   - Prefer existing object, script, room, sprite, option, extension, and datafile patterns.
+   - Check whether GameMaker IDE validation is required; command-line checks cannot prove every editor/runtime behavior.
+3. Choose the right tool for the task:
+   - Edit source files directly for narrow GML/docs changes when resource metadata does not need to change.
+   - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
+   - Use `gm-cli` for compile/run/package/manual workflows.
+   - Use Common Utils only when the project should consume or contribute reusable shared utilities.
+4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`
    - `npx @gamemaker/gm-cli@latest --help`
-3. Prefer `npx @gamemaker/gm-cli@latest ...` for one-off or exploratory use so the command uses the latest published package without changing global tools.
-4. Use a global install only when repeated local use is expected:
+5. Prefer `npx @gamemaker/gm-cli@latest ...` for one-off or exploratory use so the command uses the latest published package without changing global tools.
+6. Use a global install only when repeated local use is expected:
    - `npm install -g @gamemaker/gm-cli@latest`
    - `gm-cli --help`
-5. If a command would download runtimes/toolchains, install packages, open a browser, sign in, or publish/upload builds, ask for user approval when sandbox or project safety requires it.
+7. If a command would download runtimes/toolchains, install packages, open a browser, sign in, or publish/upload builds, ask for user approval when sandbox or project safety requires it.
 
 If a required local tool is missing, do not silently switch to a weaker workflow. State the missing tool, ask whether it can be installed, and use a manual or limited fallback only if the user declines the install, the install fails, or the tool is unavailable for the current machine.
 
@@ -77,7 +96,7 @@ Read `references/resource-tool.md` before using `gm-cli resourcetool`, ResourceT
 Read `references/html5-console-triage.md` before diagnosing browser console noise from a GameMaker HTML5 runner or exported HTML build.
 Read `references/common-utils.md` before installing, linking, migrating, or contributing shared GameMaker resources through `edcasillas/gamemaker-common-utils`.
 
-## Command Selection
+## Tool Selection
 
 Use `gm-cli` for:
 
@@ -89,6 +108,18 @@ Use `gm-cli` for:
 - Packaging and publishing to GX.Games when explicitly requested.
 
 Do not use `gm-cli` as a substitute for legacy-source preservation work. For historical Game Maker artifacts, preserve originals and use the active migrated project unless the user explicitly asks otherwise.
+
+Use direct file edits for:
+
+- Focused GML changes in existing scripts or object events.
+- Documentation and project workflow updates.
+- Small resource-file corrections where the GameMaker metadata impact is clear.
+
+Use GameMaker IDE validation when:
+
+- Resource tree behavior, object events, room layout, options, extensions, or imported assets may be affected.
+- A change depends on how the editor serializes or resolves resources.
+- The user reports behavior that only appears inside the IDE or runtime runner.
 
 ## Safe Workflow
 

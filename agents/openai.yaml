@@ -1,4 +1,4 @@
 interface:
   display_name: "GameMaker Development"
-  short_description: "Use gm-cli and optional Common Utils workflows for GameMaker projects"
-  default_prompt: "Use $gamemaker-development to install gm-cli, validate a GameMaker project, or integrate optional Common Utils."
+  short_description: "Develop, validate, automate, and publish GameMaker projects"
+  default_prompt: "Use $gamemaker-development to inspect, edit, validate, automate, or publish a GameMaker project."
