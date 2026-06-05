@@ -348,9 +348,11 @@ Provides:
 - `gmcu_html5_block_canvas(_message)`
 - `gmcu_html5_console_error(_message)`
 
-The consumer owns mobile-browser policy, displayed text, analytics, and
-game-state changes. Guard calls that may run on native targets with
-`os_browser != browser_not_a_browser`. A fresh GameMaker HTML5 export is
+The module includes `datafiles/disable-mobile.js` and injects it through HTML5
+`PostBody` to preserve Fantasma's early mobile warning, original text, and
+presentation. Consumers that do not want this fixed policy should omit the
+included file/module. Guard GML helper calls that may run on native targets
+with `os_browser != browser_not_a_browser`. A fresh GameMaker HTML5 export is
 required before browser validation; `Builds/html` does not update when GML or
 extension source changes.
 
