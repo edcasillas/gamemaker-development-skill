@@ -79,6 +79,9 @@ development even when Common Utils is not installed.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
    - Use `gm-cli` for compile/run/package/manual workflows.
    - Use Common Utils only when the project should consume or contribute reusable shared utilities.
+   - When extracting existing behavior into Common Utils, preserve timing,
+     presentation, text, side-effect order, initialization order, and platform
+     injection points. Treat any behavior change as a separate request.
 4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`

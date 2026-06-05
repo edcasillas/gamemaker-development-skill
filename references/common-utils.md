@@ -106,7 +106,8 @@ Resource folders:
 
 Provides `log_debug`, `log_info`, `log_warn`, `log_error`, `log_exception`,
 and `get_log_tags`. Logging uses `show_debug_message` and intentionally does
-not depend on GameAnalytics, JSUtils, GlobalStats.io, or NoMobileWeb.
+not depend on GameAnalytics, GlobalStats.io, HTML5 Helpers, or project-specific
+services.
 
 ### EventBus
 
@@ -357,6 +358,19 @@ required before browser validation; `Builds/html` does not update when GML or
 extension source changes.
 
 ## Migrating An Existing Resource
+
+Before editing, define the observable behavior that must remain unchanged.
+Extraction is an ownership change, not permission to redesign. Preserve:
+
+- execution and initialization timing
+- visual presentation and user-facing text
+- side-effect and callback order
+- platform injection points and extension behavior
+- consumer-owned policy
+
+If portability requires a behavior change, stop and treat it as a separate,
+explicitly approved change. Validate the original regression path, not only
+that the project compiles.
 
 1. Close GameMaker.
 2. Confirm both repos are clean:
