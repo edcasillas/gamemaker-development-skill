@@ -68,6 +68,8 @@ Import or register modules in this dependency order:
 9. `UniversalCursor`
 10. `Buttons`
 11. `Labels`
+12. `TimedActions`
+13. `Transitions`
 
 ### Core
 
@@ -256,6 +258,45 @@ Provides:
 Labels depend on `Core`, `Drawing`, `Localization`, and `LayeredGUI`. Localized
 labels draw `actual_text`, not the untranslated source key.
 
+### TimedActions
+
+Resource folders:
+
+- `objects/gmcu_o_timed_actions_manager`
+- `scripts/gmcu_wait_for_seconds`
+- `scripts/gmcu_wait_for_steps`
+
+Provides:
+
+- `gmcu_wait_for_seconds(_seconds, _action)`
+- `gmcu_wait_for_steps(_steps, _action)`
+
+The manager is created lazily, persists across rooms, rejects duplicate
+instances, and reports callback exceptions through shared Logging.
+
+### Transitions
+
+Resource folders:
+
+- `scripts/gmcu_transition_events`
+- `scripts/gmcu_transition_types`
+- `scripts/gmcu_transition_to_room`
+- `objects/gmcu_o_transition_to_room`
+- `objects/gmcu_o_transition_fadeout_to_room`
+- `objects/gmcu_o_transition_hcurtain_close_to_room`
+- `objects/gmcu_o_transition_hcurtain_open`
+
+Provides:
+
+- `GMCU_TRANSITION_TO_ROOM_TYPE`
+- `GMCU_EVENT_TRANSITION_FINISHED`
+- `gmcu_transition_to_room(_target_room, _transition_type, _seconds, _options)`
+
+`Transitions` depends on `Core`, `Drawing`, `Logging`, and `EventBus`.
+Consumers pass optional `on_progress` and `on_transition_ended` callbacks for
+audio fades, stopping music, analytics, or other project-specific side effects.
+Do not move those policies into the shared module.
+
 ## Migrating An Existing Resource
 
 1. Close GameMaker.
@@ -329,6 +370,6 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include transitions, timed actions, debug/dev
-menu helpers, GameAnalytics wrappers, GlobalStats.io wrappers, HTML5
-extensions, and optional `.yymps` packaging.
+Future Common Utils candidates include debug/dev menu helpers, GameAnalytics
+wrappers, GlobalStats.io wrappers, HTML5 extensions, and optional `.yymps`
+packaging.
