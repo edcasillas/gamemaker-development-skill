@@ -66,6 +66,8 @@ Import or register modules in this dependency order:
 7. `Localization`
 8. `LayeredGUI`
 9. `UniversalCursor`
+10. `Buttons`
+11. `Labels`
 
 ### Core
 
@@ -215,6 +217,45 @@ Provides:
 `UniversalCursor` depends on `Core`, `Drawing`, `Logging`, `LayeredGUI`, and
 `InputHub`. Cursor sprites remain consumer-owned.
 
+### Buttons
+
+Resource folders:
+
+- `scripts/gmcu_button_events`
+- `objects/gmcu_o_base_button`
+- `objects/gmcu_o_base_button_game`
+- `objects/gmcu_o_base_button_gui`
+
+Provides:
+
+- `GMCU_EVENT_BUTTON_PRESSED`
+- `gmcu_o_base_button`
+- `gmcu_o_base_button_game`
+- `gmcu_o_base_button_gui`
+
+Buttons depend on `Core`, `Drawing`, `Logging`, `EventBus`, `Localization`,
+`LayeredGUI`, and `UniversalCursor`. Sprites, fonts, sounds, and button IDs
+remain consumer-owned.
+
+### Labels
+
+Resource folders:
+
+- `scripts/gmcu_draw_text_outlined`
+- `objects/gmcu_o_base_label`
+- `objects/gmcu_o_label_game`
+- `objects/gmcu_o_label_gui`
+
+Provides:
+
+- `gmcu_draw_text_outlined(...)`
+- `gmcu_o_base_label`
+- `gmcu_o_label_game`
+- `gmcu_o_label_gui`
+
+Labels depend on `Core`, `Drawing`, `Localization`, and `LayeredGUI`. Localized
+labels draw `actual_text`, not the untranslated source key.
+
 ## Migrating An Existing Resource
 
 1. Close GameMaker.
@@ -288,6 +329,6 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include buttons/reusable UI, labels, transitions,
-timed actions, debug/dev menu helpers, GameAnalytics wrappers, GlobalStats.io
-wrappers, HTML5 extensions, and optional `.yymps` packaging.
+Future Common Utils candidates include transitions, timed actions, debug/dev
+menu helpers, GameAnalytics wrappers, GlobalStats.io wrappers, HTML5
+extensions, and optional `.yymps` packaging.
