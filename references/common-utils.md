@@ -72,6 +72,7 @@ Import or register modules in this dependency order:
 13. `Transitions`
 14. `GameAnalytics`
 15. `GlobalStats.io`
+16. `HTML5 Helpers`
 
 ### Core
 
@@ -335,6 +336,24 @@ This module is only a facade. The GlobalStats.io controller, `gs_*` HTTP
 client, credentials, GTD identifiers, player identity policy, persistence,
 response events, and payload schema remain consumer-owned.
 
+### HTML5 Helpers
+
+Resource folder:
+
+- `extensions/gmcu_html5_helpers`
+
+Provides:
+
+- `gmcu_html5_is_mobile_device()`
+- `gmcu_html5_block_canvas(_message)`
+- `gmcu_html5_console_error(_message)`
+
+The consumer owns mobile-browser policy, displayed text, analytics, and
+game-state changes. Guard calls that may run on native targets with
+`os_browser != browser_not_a_browser`. A fresh GameMaker HTML5 export is
+required before browser validation; `Builds/html` does not update when GML or
+extension source changes.
+
 ## Migrating An Existing Resource
 
 1. Close GameMaker.
@@ -408,7 +427,8 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-Future Common Utils candidates include GlobalStats.io wrappers and HTML5
-extensions. Debug/dev menus are separate new feature work,
-not part of the Fantasma extraction roadmap. `.yymps` packaging is deferred
-because copied imports do not preserve editable submodule links.
+The Fantasma extraction roadmap is complete through HTML5 Helpers. Keep
+credentials, GTD identifiers, localization content, mobile-browser policy,
+consumer messages, and project-specific behavior in the consuming project.
+Debug/dev menus remain separate new feature work. `.yymps` packaging remains
+deferred because copied imports do not preserve editable submodule links.
