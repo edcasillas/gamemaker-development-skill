@@ -71,6 +71,7 @@ Import or register modules in this dependency order:
 12. `TimedActions`
 13. `Transitions`
 14. `GameAnalytics`
+15. `GlobalStats.io`
 
 ### Core
 
@@ -316,6 +317,23 @@ This module is only a facade. The GameAnalytics extension, its `ga_*` SDK
 scripts, credentials, consent policy, build identifiers, and game-specific
 event taxonomy remain consumer-owned. Never copy credentials into Common
 Utils.
+
+### GlobalStats.io
+
+Resource folder:
+
+- `scripts/gmcu_globalstats`
+
+Provides:
+
+- `gmcu_globalstats_is_available()`
+- `gmcu_globalstats_request_leaderboard(_gtd, _num_entries = 10)`
+- `gmcu_globalstats_share(_player_id, _player_name, _values)`
+- `gmcu_globalstats_request_rank_section(_gtd, _player_id = undefined)`
+
+This module is only a facade. The GlobalStats.io controller, `gs_*` HTTP
+client, credentials, GTD identifiers, player identity policy, persistence,
+response events, and payload schema remain consumer-owned.
 
 ## Migrating An Existing Resource
 
