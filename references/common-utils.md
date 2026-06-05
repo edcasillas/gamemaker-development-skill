@@ -73,6 +73,7 @@ Import or register modules in this dependency order:
 14. `GameAnalytics`
 15. `GlobalStats.io`
 16. `HTML5 Helpers`
+17. `Release and Build Info`
 
 ### Core
 
@@ -357,6 +358,50 @@ with `os_browser != browser_not_a_browser`. A fresh GameMaker HTML5 export is
 required before browser validation; `Builds/html` does not update when GML or
 extension source changes.
 
+### Release and Build Info
+
+Tool:
+
+- `tools/release/gmcu_release.py`
+
+GameMaker resource folders:
+
+- `scripts/gmcu_build_info`
+- `objects/gmcu_o_build_info_label`
+
+The CLI provides `export`, `serve-html`, `stop-html`, `status`, `version`, and
+`deploy`. The normal consumer config contains only itch username/project and an
+ordered platform list. Common Utils infers the `.yyp`, conventional
+`Builds/<platform>` paths, matching channel names, stable IDs, version-file
+locations, state filename, and HTML server defaults. Advanced consumers may
+override conventions when necessary.
+
+Export and deployment are separate by design. `export` uses `gm-cli package`
+by default and never invokes Butler. gm-cli 2.1.0 does not yet support the
+HTML5 target, so consumers may configure an explicit per-platform
+`export_command`; otherwise export HTML from GameMaker and run `serve-html`.
+HTML exports may pass `--serve` when their configured export command succeeds.
+The managed background server prints localhost and LAN URLs. `serve-html` can
+start or reuse it without re-exporting, and `stop-html` stops only the process
+recorded for that consumer.
+
+`deploy` requires confirmation that the exact export was tested, or
+`--yes-tested` for intentional non-interactive use. It reads channel versions
+through `butler status`, falls back to the consumer's versioned state, updates
+`options.ini` and `buildnumber.txt`, then invokes `butler push`.
+
+Initialize runtime build information before analytics and menu creation:
+
+```gml
+gmcu_build_info_init({
+    author: "Studio Name",
+    copyright_start_year: 2024
+});
+global.build_number = gmcu_build_info_get_version();
+```
+
+The fallback without `buildnumber.txt` is `GM_version + "-dev"`.
+
 ## Migrating An Existing Resource
 
 Before editing, define the observable behavior that must remain unchanged.
@@ -443,8 +488,9 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-The Fantasma extraction roadmap is complete through HTML5 Helpers. Keep
-credentials, GTD identifiers, localization content, mobile-browser policy,
-consumer messages, and project-specific behavior in the consuming project.
+The Fantasma extraction roadmap is complete through Release and Build Info.
+Keep credentials, release configuration and state, GTD identifiers,
+localization content, mobile-browser policy, consumer messages, generated
+builds, and project-specific behavior in the consuming project.
 Debug/dev menus remain separate new feature work. `.yymps` packaging remains
 deferred because copied imports do not preserve editable submodule links.
