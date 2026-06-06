@@ -74,6 +74,7 @@ Import or register modules in this dependency order:
 15. `GlobalStats.io`
 16. `HTML5 Helpers`
 17. `Release and Build Info`
+18. `Dev Menu`
 
 ### Core
 
@@ -402,6 +403,19 @@ global.build_number = gmcu_build_info_get_version();
 
 The fallback without `buildnumber.txt` is `GM_version + "-dev"`.
 
+### Dev Menu
+
+Resource folders:
+
+- `scripts/gmcu_dev_menu`
+- `objects/gmcu_o_dev_menu`
+
+Provides `gmcu_dev_menu_init(_config)`, which creates or reconfigures the
+DevBuild-only persistent singleton automatically. Standard adapters provide
+room navigation, language selection, and a viewer for the structured Logging
+ring buffer. Consumer projects own pause policy, room filtering, labels,
+language providers, and optional visual theming.
+
 ## Migrating An Existing Resource
 
 Before editing, define the observable behavior that must remain unchanged.
@@ -488,9 +502,9 @@ Command-line checks do not replace GameMaker IDE validation.
 
 ## Roadmap
 
-The Fantasma extraction roadmap is complete through Release and Build Info.
+The Fantasma extraction roadmap is complete through Dev Menu.
 Keep credentials, release configuration and state, GTD identifiers,
 localization content, mobile-browser policy, consumer messages, generated
 builds, and project-specific behavior in the consuming project.
-Debug/dev menus remain separate new feature work. `.yymps` packaging remains
-deferred because copied imports do not preserve editable submodule links.
+`.yymps` packaging remains deferred because copied imports do not preserve
+editable submodule links.
