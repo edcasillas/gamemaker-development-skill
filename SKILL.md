@@ -193,6 +193,8 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 ## GameMaker Project Hygiene
 
 - Respect existing project conventions for output folders, targets, and runtime versions.
+- Add concise JSDoc to every new or modified function. State what it does,
+  document relevant parameters, and include its return value when applicable.
 - Do not commit generated packages or downloaded runtimes unless the repository explicitly tracks them.
 - Treat login/access keys and GX.Games publish state as user-controlled credentials and external state.
 - When a command fails, capture the exact command, working directory, tool version, and error output before changing project files.
