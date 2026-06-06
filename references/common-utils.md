@@ -416,6 +416,21 @@ room navigation, language selection, and a viewer for the structured Logging
 ring buffer. Consumer projects own pause policy, room filtering, labels,
 language providers, and optional visual theming.
 
+The default menu is modal: it deactivates other instances while open, keeps
+in-game notifications active, and reactivates the game on close. Menu callback
+exceptions must be caught and routed through Logging so a debug action cannot
+terminate the game.
+
+For HTML5, avoid deferred anonymous functions that depend on captured local
+variables. Store callback arguments and providers explicitly in item/page
+structs, and test every dynamic submenu and action in the HTML5 runner. VM
+compilation can succeed even when an HTML5 callback becomes `undefined`.
+
+Room navigation remains consumer-aware. If a target room requires a persistent
+controller or progression state, the consumer callback must initialize it
+before `room_goto`; rooms intended for direct IDE execution should bootstrap
+the same dependencies themselves.
+
 ## Migrating An Existing Resource
 
 Before editing, define the observable behavior that must remain unchanged.
