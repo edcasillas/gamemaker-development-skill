@@ -107,9 +107,14 @@ Resource folders:
 - `scripts/log_exception`
 
 Provides `log_debug`, `log_info`, `log_warn`, `log_error`, `log_exception`,
-and `get_log_tags`. Logging uses `show_debug_message` and intentionally does
-not depend on GameAnalytics, GlobalStats.io, HTML5 Helpers, or project-specific
-services.
+`get_log_tags`, and `gmcu_log_set_telemetry_handler`. Logging uses
+`show_debug_message` and intentionally does not depend on GameAnalytics,
+GlobalStats.io, HTML5 Helpers, or project-specific services.
+
+Consumers that historically forwarded logs to analytics must register a
+telemetry handler and preserve severity mapping plus `log_debug(..., true)`
+local-only behavior. Do not remove observable telemetry merely to keep the
+shared module portable.
 
 ### EventBus
 
