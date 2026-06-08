@@ -29,8 +29,8 @@ Typical examples:
 - first-run settings files saved later through `ds_map_secure_save`
 - optional included files with GML fallback defaults
 
-For build labels, do not assume an IDE HTML5 run means `IS_DEV_BUILD` is true.
-`IS_DEV_BUILD` is tied to the selected GameMaker config/macro state. A project
+For build labels, do not assume an IDE HTML5 run means `GMCU_IS_DEV_BUILD` is true.
+`GMCU_IS_DEV_BUILD` is tied to the selected GameMaker config/macro state. A project
 may need a separate local-run signal if it wants three labels such as:
 
 - release candidate: value read from `buildnumber.txt`
@@ -41,8 +41,8 @@ When documenting or replicating this pattern in another project, make the dev
 signal explicit:
 
 ```gml
-#macro IS_DEV_BUILD false
-#macro DevBuild:IS_DEV_BUILD true
+#macro GMCU_IS_DEV_BUILD false
+#macro DevBuild:GMCU_IS_DEV_BUILD true
 ```
 
 Then document how to select the `DevBuild` configuration in the IDE before

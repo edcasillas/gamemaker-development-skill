@@ -17,7 +17,7 @@ project. It does not keep a live link to the source repo. For editable shared
 code:
 
 1. Keep the consumer `.yyp` resource paths local, such as
-   `scripts/event_bus/event_bus.yy`.
+   `scripts/gmcu_event_bus/event_bus.yy`.
 2. Replace each local resource folder with a symlink to the matching folder in
    `vendor/gamemaker-common-utils`.
 3. Let GameMaker edit the local path; the filesystem redirects writes into the
@@ -50,8 +50,9 @@ the `.yy` resource.
 
 ## Naming Policy
 
-New shared public resources and APIs use `gmcu_` as the first token in the
-name. For objects, put the prefix before `o`, such as `gmcu_o_input_hub`.
+All Common Utils public resources and APIs use `gmcu_` as the first token in
+the name. Macros, enums, and constants use `GMCU_`. For objects, put the
+prefix before `o`, such as `gmcu_o_input_hub`. Do not add unprefixed aliases.
 
 ## Module Documentation Standard
 
@@ -110,39 +111,39 @@ Import or register modules in this dependency order:
 
 Resource folder:
 
-- `scripts/common_macros`
+- `scripts/gmcu_core`
 
-Provides `OBJECT_NAME`, `ROOM_NAME`, `DELTA_TIME_SECONDS`, `LAYER_DEPTH_MIN`,
-`LAYER_DEPTH_MAX`, `IS_DEV_BUILD`, and
-`common_utils_set_notification_handler`.
+Provides `GMCU_OBJECT_NAME`, `GMCU_ROOM_NAME`, `GMCU_DELTA_TIME_SECONDS`, `GMCU_LAYER_DEPTH_MIN`,
+`GMCU_LAYER_DEPTH_MAX`, `GMCU_IS_DEV_BUILD`, and
+`gmcu_set_notification_handler`.
 
 ### Drawing
 
 Resource folder:
 
-- `scripts/DrawingParameters`
+- `scripts/gmcu_drawing_parameters`
 
-Provides `new DrawingParameters()` and `DrawingParameters.apply()`.
+Provides `new gmcu_DrawingParameters()` and `gmcu_DrawingParameters.apply()`.
 
 ### Logging
 
 Resource folders:
 
-- `scripts/log_config`
-- `scripts/get_log_tags`
-- `scripts/log_debug`
-- `scripts/log_info`
-- `scripts/log_warn`
-- `scripts/log_error`
-- `scripts/log_exception`
+- `scripts/gmcu_log_config`
+- `scripts/gmcu_log_get_tags`
+- `scripts/gmcu_log_debug`
+- `scripts/gmcu_log_info`
+- `scripts/gmcu_log_warn`
+- `scripts/gmcu_log_error`
+- `scripts/gmcu_log_exception`
 
-Provides `log_debug`, `log_info`, `log_warn`, `log_error`, `log_exception`,
-`get_log_tags`, and `gmcu_log_set_telemetry_handler`. Logging uses
+Provides `gmcu_log_debug`, `gmcu_log_info`, `gmcu_log_warn`, `gmcu_log_error`, `gmcu_log_exception`,
+`gmcu_log_get_tags`, and `gmcu_log_set_telemetry_handler`. Logging uses
 `show_debug_message` and intentionally does not depend on GameAnalytics,
 GlobalStats.io, HTML5 Helpers, or project-specific services.
 
 Consumers that historically forwarded logs to analytics must register a
-telemetry handler and preserve severity mapping plus `log_debug(..., true)`
+telemetry handler and preserve severity mapping plus `gmcu_log_debug(..., true)`
 local-only behavior. Do not remove observable telemetry merely to keep the
 shared module portable.
 
@@ -150,13 +151,13 @@ shared module portable.
 
 Resource folder:
 
-- `scripts/event_bus`
+- `scripts/gmcu_event_bus`
 
 Provides:
 
-- `eventbus_subscribe(_event_name)`
-- `eventbus_unsubscribe(_event_name)`
-- `eventbus_dispatch(_event_name, _event_args = undefined)`
+- `gmcu_eventbus_subscribe(_event_name)`
+- `gmcu_eventbus_unsubscribe(_event_name)`
+- `gmcu_eventbus_dispatch(_event_name, _event_args = undefined)`
 
 Observers define:
 
@@ -169,12 +170,12 @@ on_event = function(_event_name, _event_args) {
 
 Resource folders:
 
-- `scripts/InGameNotificationSettings`
-- `scripts/show_notification`
-- `objects/o_notification_from_top`
+- `scripts/gmcu_in_game_notification_settings`
+- `scripts/gmcu_show_notification`
+- `objects/gmcu_o_notification_from_top`
 
-Provides `InGameNotificationSettings` and `show_notification`. It registers a
-notification handler for Logging so dev-build `log_error` and `log_exception`
+Provides `gmcu_InGameNotificationSettings` and `gmcu_show_notification`. It registers a
+notification handler for Logging so dev-build `gmcu_log_error` and `gmcu_log_exception`
 calls can show visual notifications.
 
 ### InputHub
@@ -493,30 +494,30 @@ git -C vendor/gamemaker-common-utils status --short
 4. Link the local folder:
 
 ```sh
-tools/link-common-utils-resource.sh scripts/event_bus
+tools/link-common-utils-resource.sh scripts/gmcu_event_bus
 ```
 
 If the project does not include that helper, use the skill copy:
 
 ```sh
-.agents/skills/gamemaker-development/scripts/link-common-utils-resource.sh scripts/event_bus
+.agents/skills/gamemaker-development/scripts/link-common-utils-resource.sh scripts/gmcu_event_bus
 ```
 
 5. Verify the link:
 
 ```sh
-ls -ld scripts/event_bus
-sed -n '1,10p' scripts/event_bus/event_bus.gml
+ls -ld scripts/gmcu_event_bus
+sed -n '1,10p' scripts/gmcu_event_bus/event_bus.gml
 ```
 
 6. Stage the replacement:
 
 ```sh
-git add -A scripts/event_bus
+git add -A scripts/gmcu_event_bus
 git diff --cached --summary
 ```
 
-Expected output includes `create mode 120000 scripts/event_bus` and deletions
+Expected output includes `create mode 120000 scripts/gmcu_event_bus` and deletions
 for the old local files.
 
 7. Open GameMaker and verify the resource opens through the local path.

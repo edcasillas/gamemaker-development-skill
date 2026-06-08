@@ -3,7 +3,7 @@ set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <resource-directory>" >&2
-  echo "Example: $0 scripts/event_bus" >&2
+  echo "Example: $0 scripts/gmcu_event_bus" >&2
   exit 2
 fi
 

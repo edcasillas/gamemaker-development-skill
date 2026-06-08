@@ -210,6 +210,6 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
   browser-stored save file. On HTML5, that can produce a visible `HEAD` request
   before the normal fallback path runs.
 - Preserve release build-number behavior when suppressing dev-runner noise:
-  generated release builds may include a build-number file, `IS_DEV_BUILD` is an
+  generated release builds may include a build-number file, `GMCU_IS_DEV_BUILD` is an
   explicit config/macro signal, and a GameMaker IDE run is not automatically a
   DevBuild.
