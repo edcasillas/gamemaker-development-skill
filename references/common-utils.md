@@ -53,6 +53,36 @@ the `.yy` resource.
 New shared public resources and APIs use `gmcu_` as the first token in the
 name. For objects, put the prefix before `o`, such as `gmcu_o_input_hub`.
 
+## Module Documentation Standard
+
+Keep the repository README as a concise module index. Each module entry should
+link to its page under `docs/modules/` instead of duplicating complete resource
+lists, API details, or consumer instructions.
+
+Write each module page for a human reader who needs to use or contribute to the
+module:
+
+1. Start with a brief description.
+2. Put practical usage instructions immediately after the description.
+3. Describe the purpose of every listed resource, public event, enum, object,
+   method, global, and other API surface. Do not publish unexplained name-only
+   lists.
+4. List direct dependencies with a brief explanation of why the current module
+   uses each one.
+5. Show dependencies of dependencies as a nested tree. Descriptions are
+   optional for these transitive entries.
+6. Link every mention of another documented Common Utils module or concept to
+   its existing documentation, including mentions outside the dependency
+   section.
+7. Keep consumer usage separate from contribution and editable-submodule
+   instructions.
+8. Add concise JSDoc to every new or modified function associated with the
+   documented module.
+
+Apply this standard to the module currently being changed. Do not broaden a
+focused documentation request into a rewrite of every module unless the user
+explicitly asks for that sweep.
+
 ## Current Modules
 
 Import or register modules in this dependency order:
