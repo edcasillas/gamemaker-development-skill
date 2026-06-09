@@ -457,6 +457,20 @@ in-game notifications active, and reactivates the game on close. Menu callback
 exceptions must be caught and routed through Logging so a debug action cannot
 terminate the game.
 
+Standard diagnostic pages should remain optional integrations:
+
+- Resolve optional manager objects by asset name instead of introducing hard
+  compile-time dependencies from Dev Menu to every inspected module.
+- Capture module state immediately before modal deactivation.
+  `instance_exists()` ignores deactivated instances, so a page generated after
+  opening the menu can incorrectly report valid subscribers as missing.
+- Store copied diagnostic rows in explicit item fields rather than deferred
+  closures, and reuse the standard copyable text interaction when practical.
+- Include object name and runtime instance id. When several instances share an
+  object, let the subscription API accept an optional stable diagnostic label
+  such as a button id. GameMaker does not expose the Room Editor instance name
+  from a runtime instance id.
+
 For HTML5, avoid deferred anonymous functions that depend on captured local
 variables. Store callback arguments and providers explicitly in item/page
 structs, and test every dynamic submenu and action in the HTML5 runner. VM
