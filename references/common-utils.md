@@ -79,6 +79,9 @@ module:
    instructions.
 8. Add concise JSDoc to every new or modified function associated with the
    documented module.
+9. When a repository maintains an ordered documentation set, end each document
+   with a consistent `Previous | Back | Next` footer. The `Back` link must
+   return to the set's main documentation index.
 
 Apply this standard to the module currently being changed. Do not broaden a
 focused documentation request into a rewrite of every module unless the user
