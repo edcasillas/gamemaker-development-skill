@@ -98,6 +98,7 @@ Read `references/gm-cli.md` before running non-trivial `gm-cli` commands or docu
 Read `references/resource-tool.md` before using `gm-cli resourcetool`, ResourceTool scripts, or ResourceTool MCP.
 Read `references/html5-console-triage.md` before diagnosing browser console noise from a GameMaker HTML5 runner or exported HTML build.
 Read `references/common-utils.md` before installing, linking, migrating, or contributing shared GameMaker resources through `edcasillas/gamemaker-common-utils`.
+Read `references/gameanalytics.md` before installing or upgrading the GameAnalytics GameMaker SDK, creating a local defensive facade, configuring credentials, or wiring Common Utils Logging telemetry.
 Use the Common Utils release CLI when a consumer should export through
 `gm-cli`, serve an HTML export on localhost/LAN, generate a build version, or
 publish an explicitly tested artifact through Butler. Keep export and deploy as

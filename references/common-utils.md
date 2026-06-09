@@ -101,11 +101,10 @@ Import or register modules in this dependency order:
 11. `Labels`
 12. `TimedActions`
 13. `Transitions`
-14. `GameAnalytics`
-15. `GlobalStats.io`
-16. `HTML5 Helpers`
-17. `Release and Build Info`
-18. `Dev Menu`
+14. `GlobalStats.io`
+15. `HTML5 Helpers`
+16. `Release and Build Info`
+17. `Dev Menu`
 
 ### Core
 
@@ -339,24 +338,16 @@ Consumers pass optional `on_progress` and `on_transition_ended` callbacks for
 audio fades, stopping music, analytics, or other project-specific side effects.
 Do not move those policies into the shared module.
 
-### GameAnalytics
+### Provider Telemetry
 
-Resource folder:
+Common Utils does not own provider SDK integrations such as GameAnalytics.
+Logging remains provider-independent and exposes
+`gmcu_log_set_telemetry_handler(_handler)` for consumer wiring.
 
-- `scripts/gmcu_gameanalytics`
-
-Provides:
-
-- `gmcu_gameanalytics_init(_options)`
-- `gmcu_gameanalytics_add_design_event(_event_id, _value)`
-- `gmcu_gameanalytics_add_progression_event(...)`
-- `gmcu_gameanalytics_add_error_event(_severity, _message)`
-- `gmcu_gameanalytics_end_session()`
-
-This module is only a facade. The GameAnalytics extension, its `ga_*` SDK
-scripts, credentials, consent policy, build identifiers, and game-specific
-event taxonomy remain consumer-owned. Never copy credentials into Common
-Utils.
+Keep each provider extension, compatibility facade, credentials, consent
+policy, build identifiers, severity mapping, sessions, and event taxonomy in
+the consuming project. For GameAnalytics installation and wiring, read
+`gameanalytics.md`.
 
 ### GlobalStats.io
 
