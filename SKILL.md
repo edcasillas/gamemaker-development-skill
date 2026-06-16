@@ -11,6 +11,11 @@ constraints, build workflows, and reusable utility patterns.
 
 This skill is standalone. It can complement migration-specific skills, but it does not require them.
 
+This skill must remain generic and reusable for any GameMaker project. Do not
+encode game-specific rules, project names, characters, rooms, lore, or repo-only
+conventions into this skill. If a lesson is useful only for one repository, put
+it in that repository's docs or agent guidance instead.
+
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
 GameMaker project.
@@ -207,7 +212,7 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - Distinguish IDE runner URLs such as `http://localhost:<port>/` from exported
   build folders such as `Builds/html`; they may not load the same injected
   files.
-- For Chrome console 404s from `fantasma.js` or another generated runner file,
+- For Chrome console 404s from a generated runner file such as `html5game/*.js`,
   check whether GML called `file_exists()` on a missing included file or
   browser-stored save file. On HTML5, that can produce a visible `HEAD` request
   before the normal fallback path runs.
