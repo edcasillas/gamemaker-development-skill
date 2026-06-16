@@ -16,6 +16,10 @@ encode game-specific rules, project names, characters, rooms, lore, or repo-only
 conventions into this skill. If a lesson is useful only for one repository, put
 it in that repository's docs or agent guidance instead.
 
+When producing durable documentation, keep it complete but concise. Prefer a
+short `Quickstart`, dependency/API tables when they improve scanability, and
+diagrams wherever they add real explanatory value.
+
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
 GameMaker project.
@@ -84,9 +88,14 @@ development even when Common Utils is not installed.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
    - Use `gm-cli` for compile/run/package/manual workflows.
    - Use Common Utils only when the project should consume or contribute reusable shared utilities.
+   - Before adding a new shared helper or refactoring toward Common Utils, search
+     the project for an existing local helper that already solves the problem.
+     Prefer migrating that implementation over rewriting it from scratch.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
+   - Do not replace a simple existing helper with a more configurable shared
+     abstraction unless the extra complexity is clearly required.
 4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`
