@@ -19,6 +19,9 @@ it in that repository's docs or agent guidance instead.
 When producing durable documentation, keep it complete but concise. Prefer a
 short `Quickstart`, dependency/API tables when they improve scanability, and
 diagrams wherever they add real explanatory value.
+Do not pad module documentation with repeated boilerplate sections when a root
+owner document already explains the shared workflow; keep repeated guidance in
+the owner doc and leave module pages for module-specific rules.
 
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
