@@ -109,6 +109,10 @@ Use the Common Utils release CLI when a consumer should export through
 `gm-cli`, serve an HTML export on localhost/LAN, generate a build version, or
 publish an explicitly tested artifact through Butler. Keep export and deploy as
 separate user actions.
+When a project already uses a shared utility family such as Common Utils,
+prefer fixing cross-module integration at the shared-owner layer before adding
+consumer-side workarounds. Keep that guidance generic and reusable rather than
+encoding repository-specific exceptions into the skill.
 
 ## Tool Selection
 
