@@ -94,11 +94,19 @@ development even when Common Utils is not installed.
    - Before adding a new shared helper or refactoring toward Common Utils, search
      the project for an existing local helper that already solves the problem.
      Prefer migrating that implementation over rewriting it from scratch.
+   - Before editing a shared utility resource, confirm the active resource path.
+     A project may expose both a vendor checkout and a mirrored or symlinked
+     project resource. Do not assume the vendor file you found is the runtime
+     file the project actually consumes.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
    - Do not replace a simple existing helper with a more configurable shared
      abstraction unless the extra complexity is clearly required.
+   - After changing a shared utility feature, verify that every required piece
+     of the fix landed together in the active resource path: helper/state,
+     runtime behavior, UI/draw/input path, and any mirrored resource copies the
+     project still uses. Do not close the task on a half-landed patch.
 4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`
@@ -125,6 +133,10 @@ When a project already uses a shared utility family such as Common Utils,
 prefer fixing cross-module integration at the shared-owner layer before adding
 consumer-side workarounds. Keep that guidance generic and reusable rather than
 encoding repository-specific exceptions into the skill.
+When a shared utility change appears not to work in runtime, immediately check
+whether the edit landed in the active resource path, whether the project keeps
+mirrored copies of the same resource, and whether only part of the intended
+change was applied.
 
 ## Tool Selection
 
