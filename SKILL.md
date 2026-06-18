@@ -107,6 +107,15 @@ development even when Common Utils is not installed.
      A project may expose both a vendor checkout and a mirrored or symlinked
      project resource. Do not assume the vendor file you found is the runtime
      file the project actually consumes.
+   - When adding a new shared resource from a toolbox such as Common Utils,
+     treat it as a 3-part integration:
+     1. the real shared resource in the toolbox repo
+     2. the local project exposure path that GameMaker resolves, often a
+        symlinked folder in `scripts/`, `objects/`, or `extensions/`
+     3. the project registration in the consumer `.yyp`
+   - Do not treat that integration as complete until all three pieces exist.
+     A resource can be perfectly valid on disk and still be invisible to
+     GameMaker if the local exposure path or `.yyp` registration is missing.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
@@ -116,6 +125,14 @@ development even when Common Utils is not installed.
      of the fix landed together in the active resource path: helper/state,
      runtime behavior, UI/draw/input path, and any mirrored resource copies the
      project still uses. Do not close the task on a half-landed patch.
+   - Minimum verification for a newly added shared resource:
+     - confirm the local project path with `ls -ld` or `readlink`
+     - confirm the resource entry in the consumer `.yyp`
+     - confirm consumer code references the exact asset name
+     - run `git diff --check`
+     - if the change depends on a new asset existing in the editor, require
+       IDE confirmation that it appears in the Asset Browser before calling the
+       work complete
 4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`
