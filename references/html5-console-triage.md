@@ -10,6 +10,17 @@ Use this reference when a GameMaker HTML5 run shows Chrome console errors.
 - Confirm the active URL and inspect the served HTML before assuming generated
   build output matches the current run.
 
+## Chrome Console Filters
+
+- Before assuming a Common Utils debug log is missing, check Chrome DevTools
+  console filters.
+- `gmcu_html5_console_debug()` writes through `console.debug(...)`, which
+  Chrome commonly groups under the `Verbose` level.
+- A log can therefore be emitted correctly, appear in the Dev Menu log viewer,
+  and still seem absent from Chrome until `Verbose` is enabled.
+- Compare against `console.log`, `console.info`, `console.warn`, and
+  `console.error` before treating this as a runtime regression.
+
 ## `file_exists()` 404s
 
 On HTML5, GameMaker can implement `file_exists()` as:

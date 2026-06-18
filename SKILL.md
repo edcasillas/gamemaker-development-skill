@@ -138,6 +138,21 @@ whether the edit landed in the active resource path, whether the project keeps
 mirrored copies of the same resource, and whether only part of the intended
 change was applied.
 
+## Startup Bootstrap Guidance
+
+- Prefer a single startup bootstrap script over multiple competing
+  initialization entrypoints unless a concrete requirement demands otherwise.
+- When a project uses top-level script statements for bootstrap and also uses
+  `gml_pragma("global", ...)`, verify the actual ordering before depending on
+  it.
+- If the manual confirms a behavior, document it as official.
+- If the project relies on behavior you verified experimentally but could not
+  confirm in the manual, document it explicitly as empirically verified
+  project behavior, not as a guaranteed engine contract.
+- When a project has verified that loose top-level bootstrap code runs earlier
+  than pragma-global hooks, prefer the loose bootstrap script for the primary
+  initialization path because it is simpler and earlier.
+
 ## Tool Selection
 
 Use `gm-cli` for:
