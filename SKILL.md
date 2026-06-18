@@ -120,6 +120,10 @@ development even when Common Utils is not installed.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
+   - Do not add wrapper helpers that only forward to another function unless
+     they already represent a real policy or reusable ownership boundary. If a
+     helper is just `return other_func()` with no actual abstraction value, it
+     is usually unjustified indirection.
    - Do not replace a simple existing helper with a more configurable shared
      abstraction unless the extra complexity is clearly required.
    - After changing a shared utility feature, verify that every required piece
