@@ -117,6 +117,12 @@ development even when Common Utils is not installed.
    - Treat macro/event declaration scripts exactly like any other GameMaker
      resource. A script that only contains `#macro` constants still needs its
      `.gml`, `.yy`, local exposure path, and consumer `.yyp` entry.
+   - Distinguish broken shared-resource wiring from stale IDE symbol indexing.
+     When you add a new macro/event script, verify the `.gml`, `.yy`, local
+     exposure path, and consumer `.yyp` entry. When you change an existing
+     shared macro/event script, also verify that GameMaker resolves the new
+     symbols after a project refresh; the disk wiring can be correct while the
+     IDE still shows stale undefined symbols.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
