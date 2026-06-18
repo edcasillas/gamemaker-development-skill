@@ -114,6 +114,9 @@ development even when Common Utils is not installed.
    - Do not treat that integration as complete until all three pieces exist.
      A resource can be perfectly valid on disk and still be invisible to
      GameMaker if the local exposure path or `.yyp` registration is missing.
+   - Treat macro/event declaration scripts exactly like any other GameMaker
+     resource. A script that only contains `#macro` constants still needs its
+     `.gml`, `.yy`, local exposure path, and consumer `.yyp` entry.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
@@ -131,6 +134,9 @@ development even when Common Utils is not installed.
      - if the change depends on a new asset existing in the editor, require
        IDE confirmation that it appears in the Asset Browser before calling the
        work complete
+   - When debugging uncovers a concrete broken shared-resource integration, do
+     not stop at explaining the cause. Complete the registration/symlink/asset
+     fix in the same pass unless the user explicitly asked for diagnosis only.
 4. Check local tool availability before installing:
    - `node --version`
    - `npm --version`
