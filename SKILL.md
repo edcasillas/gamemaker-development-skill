@@ -1,6 +1,6 @@
 ---
 name: gamemaker-development
-description: "Use when Codex needs to develop GameMaker games or tooling: inspect and edit .yyp projects, reason about GameMaker resources and GML, validate behavior, compile/run/package/publish builds, debug HTML5/runtime issues, automate project maintenance, or share reusable resources. Uses tools such as gm-cli, ResourceTool, GameMaker Manual lookup, and optional gamemaker-common-utils workflows."
+description: "Use when the agent needs to develop GameMaker games or tooling: inspect and edit .yyp projects, reason about GameMaker resources and GML, validate behavior, compile/run/package/publish builds, debug HTML5/runtime issues, automate project maintenance, or share reusable resources. Uses tools such as gm-cli, ResourceTool, GameMaker Manual lookup, and optional gamemaker-common-utils workflows."
 ---
 
 # GameMaker Development
@@ -8,8 +8,6 @@ description: "Use when Codex needs to develop GameMaker games or tooling: inspec
 Use this skill for practical GameMaker game development. It should help an
 agent understand project structure, resource ownership, GML code, editor/runtime
 constraints, build workflows, and reusable utility patterns.
-
-This skill is standalone. It can complement migration-specific skills, but it does not require them.
 
 This skill must remain generic and reusable for any GameMaker project. Do not
 encode game-specific rules, project names, characters, rooms, lore, or repo-only
