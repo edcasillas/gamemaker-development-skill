@@ -22,6 +22,15 @@ diagrams wherever they add real explanatory value.
 Do not pad module documentation with repeated boilerplate sections when a root
 owner document already explains the shared workflow; keep repeated guidance in
 the owner doc and leave module pages for module-specific rules.
+Document long-lived behavior and ownership, not just the immediate task that
+caused the edit. In JSDoc and technical docs, explain what the code actually
+does, what state it changes, what events it emits, and what responsibility it
+owns. Avoid comments that are only meaningful if the reader already knows the
+ticket or implementation plan that introduced the code.
+Keep TODOs that represent active future work, known limitations, or intended
+follow-up. Do not preserve historical comments that only narrate past
+structure, previous names, or the fact that a refactor moved code from one
+place to another.
 
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
@@ -245,6 +254,12 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - Respect existing project conventions for output folders, targets, and runtime versions.
 - Add concise JSDoc to every new or modified function. State what it does,
   document relevant parameters, and include its return value when applicable.
+- JSDoc should describe stable behavior, outputs, side effects, and ownership.
+  Do not make the comment depend on the current task framing when a future
+  maintainer really needs to understand the function's concrete runtime effect.
+- The same rule applies to inline comments: keep forward-looking TODOs and
+  present-tense intent comments; remove backward-looking "this used to be..."
+  archaeology unless the historical fact is itself required for correctness.
 - Do not commit generated packages or downloaded runtimes unless the repository explicitly tracks them.
 - Treat login/access keys and GX.Games publish state as user-controlled credentials and external state.
 - When a command fails, capture the exact command, working directory, tool version, and error output before changing project files.
