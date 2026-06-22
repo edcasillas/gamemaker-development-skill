@@ -25,6 +25,10 @@ caused the edit. In JSDoc and technical docs, explain what the code actually
 does, what state it changes, what events it emits, and what responsibility it
 owns. Avoid comments that are only meaningful if the reader already knows the
 ticket or implementation plan that introduced the code.
+Do not write task-scoped phrasing such as "this refactor", "for this task", or
+"this fix" in durable code comments or module documentation unless the text is
+explicitly about temporary migration work. Prefer wording that remains correct
+after the immediate implementation context has been forgotten.
 Keep TODOs that represent active future work, known limitations, or intended
 follow-up. Do not preserve historical comments that only narrate past
 structure, previous names, or the fact that a refactor moved code from one
