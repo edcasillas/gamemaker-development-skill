@@ -29,6 +29,10 @@ Do not write task-scoped phrasing such as "this refactor", "for this task", or
 "this fix" in durable code comments or module documentation unless the text is
 explicitly about temporary migration work. Prefer wording that remains correct
 after the immediate implementation context has been forgotten.
+Do not use project-specific examples, asset names, or lore in shared-toolbox
+documentation or comments when editing reusable modules such as Common Utils.
+Keep shared docs consumer-agnostic unless the file explicitly documents a
+consumer integration.
 Keep TODOs that represent active future work, known limitations, or intended
 follow-up. Do not preserve historical comments that only narrate past
 structure, previous names, or the fact that a refactor moved code from one
@@ -130,6 +134,10 @@ development even when Common Utils is not installed.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
+   - When documenting ownership debt or extraction candidates, distinguish
+     confirmed ownership from unresolved candidates. Do not write guesses as if
+     they were settled repo rules; mark decisions that still need owner
+     confirmation.
    - Do not add wrapper helpers that only forward to another function unless
      they already represent a real policy or reusable ownership boundary. If a
      helper is just `return other_func()` with no actual abstraction value, it
