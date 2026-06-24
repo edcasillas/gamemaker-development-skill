@@ -153,7 +153,7 @@ shared module portable.
 
 Resource folder:
 
-- `scripts/gmcu_http_response_data`
+- `scripts/gmcu_HttpResponseData`
 
 Provides `new gmcu_HttpResponseData(_async_load)`, a reusable wrapper around
 GameMaker's Async HTTP callback DS map.
