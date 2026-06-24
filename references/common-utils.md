@@ -94,19 +94,20 @@ Import or register modules in this dependency order:
 1. `Core`
 2. `Drawing`
 3. `Logging`
-4. `EventBus`
-5. `InGameNotifications`
-6. `InputHub`
-7. `Localization`
-8. `LayeredGUI`
-9. `UniversalCursor`
-10. `Buttons`
-11. `Labels`
-12. `TimedActions`
-13. `Transitions`
-14. `HTML5 Helpers`
-15. `Release and Build Info`
-16. `Dev Menu`
+4. `Networking`
+5. `EventBus`
+6. `InGameNotifications`
+7. `InputHub`
+8. `Localization`
+9. `LayeredGUI`
+10. `UniversalCursor`
+11. `Buttons`
+12. `Labels`
+13. `TimedActions`
+14. `Transitions`
+15. `HTML5 Helpers`
+16. `Release and Build Info`
+17. `Dev Menu`
 
 ### Core
 
@@ -147,6 +148,15 @@ Consumers that historically forwarded logs to analytics must register a
 telemetry handler and preserve severity mapping plus `gmcu_log_debug(..., true)`
 local-only behavior. Do not remove observable telemetry merely to keep the
 shared module portable.
+
+### Networking
+
+Resource folder:
+
+- `scripts/gmcu_http_response_data`
+
+Provides `new gmcu_HttpResponseData(_async_load)`, a reusable wrapper around
+GameMaker's Async HTTP callback DS map.
 
 ### EventBus
 
