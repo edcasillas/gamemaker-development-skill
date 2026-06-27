@@ -37,6 +37,12 @@ Keep TODOs that represent active future work, known limitations, or intended
 follow-up. Do not preserve historical comments that only narrate past
 structure, previous names, or the fact that a refactor moved code from one
 place to another.
+When simplifying or deduplicating existing code, preserve useful comments
+unless they are wrong or become unnecessary after the change. Do not silently
+discard author comments while cleaning up structure.
+Prefer local names that describe the concrete thing being counted or placed.
+Avoid ambiguous names like `_row_count` when the value actually means tile
+count, sprite count, or horizontal repeats.
 
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
@@ -134,6 +140,11 @@ development even when Common Utils is not installed.
    - When extracting existing behavior into Common Utils, preserve timing,
      presentation, text, side-effect order, initialization order, and platform
      injection points. Treat any behavior change as a separate request.
+   - Treat duplicated hosts, fallback paths, and parallel ownership lanes as
+     suspicious until verified. If code appears to support two draw hosts, two
+     controllers, or two fallback flows, confirm from rooms, entrypoints, and
+     active runtime wiring whether both are really used before documenting or
+     preserving that complexity.
    - When documenting ownership debt or extraction candidates, distinguish
      confirmed ownership from unresolved candidates. Do not write guesses as if
      they were settled repo rules; mark decisions that still need owner
@@ -189,6 +200,10 @@ When a shared utility change appears not to work in runtime, immediately check
 whether the edit landed in the active resource path, whether the project keeps
 mirrored copies of the same resource, and whether only part of the intended
 change was applied.
+When documenting an implemented system, record the real runtime hook and host,
+not only the helper name. If a draw helper runs from a HUD object, GUI manager,
+or object event every frame with an early return, say so explicitly instead of
+forcing readers to reverse-engineer the call path from source.
 
 ## Startup Bootstrap Guidance
 
