@@ -31,6 +31,10 @@ different tradeoff:
   fallbacks.
 - `Composition Over Inheritance`: prefer small composable behaviors, helpers,
   and effects over deep inheritance or hardcoded combination types.
+- After making a local DRY cleanup, do a second pass over nearby call sites for
+  repeated policy or state-reset steps. Do not stop at extracting one repeated
+  line if the subsystem still requires the same semantic preparation in
+  multiple places.
 
 When producing durable documentation, keep it complete but concise. Prefer a
 short `Quickstart`, dependency/API tables when they improve scanability, and
@@ -178,6 +182,10 @@ development even when Common Utils is not installed.
      they already represent a real policy or reusable ownership boundary. If a
      helper is just `return other_func()` with no actual abstraction value, it
      is usually unjustified indirection.
+   - If callers repeatedly need to remember the same setup or teardown step
+     before invoking a helper, treat that as an ownership smell. Prefer a
+     semantic entry point that owns the repeated policy instead of scattering
+     hidden prerequisites across call sites.
    - For transient presentation beats such as labels, notifications, and room
      transition overlays, prefer short-lived instances that exist only while
      the beat is active over permanent manager state that polls every frame.
