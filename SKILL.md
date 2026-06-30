@@ -14,6 +14,24 @@ encode game-specific rules, project names, characters, rooms, lore, or repo-only
 conventions into this skill. If a lesson is useful only for one repository, put
 it in that repository's docs or agent guidance instead.
 
+## Core Engineering Principles
+
+Use these as default decision rules unless the user explicitly asks for a
+different tradeoff:
+
+- `KISS`: solve the problem with the simplest design that is correct and
+  maintainable.
+- `DRY` with `Rule of Three`: avoid careless duplication, but do not extract
+  unstable abstractions prematurely. Consolidate once repetition is clearly
+  real or an existing shared helper already covers it.
+- `SRP` and `SoC`: keep each object, script, helper, and document focused on a
+  clear responsibility in the correct ownership lane.
+- `Fail Fast`: surface broken assumptions, missing registrations, invalid
+  wiring, and incomplete migrations immediately instead of relying on quiet
+  fallbacks.
+- `Composition Over Inheritance`: prefer small composable behaviors, helpers,
+  and effects over deep inheritance or hardcoded combination types.
+
 When producing durable documentation, keep it complete but concise. Prefer a
 short `Quickstart`, dependency/API tables when they improve scanability, and
 diagrams wherever they add real explanatory value.
