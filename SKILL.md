@@ -29,6 +29,10 @@ Do not write task-scoped phrasing such as "this refactor", "for this task", or
 "this fix" in durable code comments or module documentation unless the text is
 explicitly about temporary migration work. Prefer wording that remains correct
 after the immediate implementation context has been forgotten.
+If a minor gameplay or UI behavior seems to require a large standalone
+technical document just to be understandable, treat that as a design smell in
+the implementation first. Prefer simplifying the runtime shape and keeping the
+explanation inside the existing owner doc when the behavior is small.
 Do not use project-specific examples, asset names, or lore in shared-toolbox
 documentation or comments when editing reusable modules such as Common Utils.
 Keep shared docs consumer-agnostic unless the file explicitly documents a
@@ -210,6 +214,11 @@ When documenting an implemented system, record the real runtime hook and host,
 not only the helper name. If a draw helper runs from a HUD object, GUI manager,
 or object event every frame with an early return, say so explicitly instead of
 forcing readers to reverse-engineer the call path from source.
+Before creating a new standalone technical document, verify that the subject
+really has enough stable complexity and independent ownership to justify it. If
+the explanation fits naturally inside an existing owner doc, prefer the owner
+doc. Do not leave behind orphaned detail docs that duplicate a shorter
+canonical explanation elsewhere.
 
 ## Startup Bootstrap Guidance
 
