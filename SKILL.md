@@ -134,6 +134,9 @@ development even when Common Utils is not installed.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
    - Use `gm-cli` for compile/run/package/manual workflows.
    - Use Common Utils only when the project should consume or contribute reusable shared utilities.
+   - For GameMaker script assets, prefer one public function per script and
+     group related scripts in the correct folder lane so entry points stay easy
+     to find from the Asset Browser and from code search.
    - Before adding a new shared helper or refactoring toward Common Utils, search
      the project for an existing local helper that already solves the problem.
      Prefer migrating that implementation over rewriting it from scratch.
