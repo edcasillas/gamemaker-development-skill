@@ -163,6 +163,10 @@ development even when Common Utils is not installed.
    - When a presentation system needs multiple combinations of the same visual
      primitives, prefer composable effects such as fade and tremble over
      multiplying object types by combination.
+   - When a shared runtime system already knows exactly when a lifecycle moment
+     completes, have it dispatch the Event Bus message directly. Avoid
+     intermediate callbacks or wrapper events that only forward the same signal
+     from one owner to another.
    - Do not replace a simple existing helper with a more configurable shared
      abstraction unless the extra complexity is clearly required.
    - After changing a shared utility feature, verify that every required piece
