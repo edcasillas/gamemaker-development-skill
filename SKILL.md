@@ -153,6 +153,12 @@ development even when Common Utils is not installed.
      they already represent a real policy or reusable ownership boundary. If a
      helper is just `return other_func()` with no actual abstraction value, it
      is usually unjustified indirection.
+   - For transient presentation beats such as labels, notifications, and room
+     transition overlays, prefer short-lived instances that exist only while
+     the beat is active over permanent manager state that polls every frame.
+   - When a presentation system needs multiple combinations of the same visual
+     primitives, prefer composable effects such as fade and tremble over
+     multiplying object types by combination.
    - Do not replace a simple existing helper with a more configurable shared
      abstraction unless the extra complexity is clearly required.
    - After changing a shared utility feature, verify that every required piece
