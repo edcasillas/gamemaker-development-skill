@@ -371,6 +371,34 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - When a command fails, capture the exact command, working directory, tool version, and error output before changing project files.
 - If a fix depends on current GameMaker behavior, verify with `gm-cli manual` or official docs rather than relying on memory.
 
+## HTML5 Host and Input Integration
+
+- If browser UI must exist during game loading, make its initial configuration
+  available to the HTML host before GML starts. Keep template injection declarative
+  (external script references); keep implementation in editable source files.
+- Inspect the generated template and runner lifecycle before moving a canvas.
+  A loading canvas can be a sibling removed through the game canvas parent; moving
+  only the game canvas can break cleanup. Preserve the parent relationship and
+  validate the loading rectangle as well as the playable frame.
+- Keep portable controller code engine-agnostic; put engine constants and resource
+  metadata in an optional adapter. Shared input infrastructure consumes snapshots;
+  the game selects layouts, button meaning, debug visibility and localized prompts.
+- Distinguish complete layout changes from button visibility. Hiding a button should
+  release its input and preserve its slot when that is the established contract.
+  Catalog-relative layouts and layout-relative artwork require matching Included
+  Files subfolders; validate both source paths and exported requests.
+- Reuse the engine's gamepad input lane for gamepad-like controls when it exists.
+  Merge sources before calculating edges; release only when the last source lets go.
+  Preserve owner routing, disconnect cleanup and source dead zones.
+- Device-aware prompts follow meaningful input, not connection alone. Held axes,
+  neutral releases and drift must not repeatedly override a later keyboard choice.
+  Render prompts from current device state instead of caching them at screen creation.
+- Before advising publication, inspect the actual pinned release CLI and launcher,
+  including supported commands and configuration-path assumptions. A newer workflow
+  on another branch or described in docs is not the checked-out implementation.
+  Keep source tests, browser fixtures, IDE runs, exported artifacts and hosted-page
+  checks distinct when reporting readiness.
+
 ## HTML5 Console Triage
 
 - Distinguish IDE runner URLs such as `http://localhost:<port>/` from exported
