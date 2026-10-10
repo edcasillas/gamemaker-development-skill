@@ -5,6 +5,16 @@ description: "Use when the agent needs to develop GameMaker games or tooling: in
 
 # GameMaker Development
 
+## Mandatory: Standalone Documentation
+
+Describe the design, behavior, and ownership that the document specifies. Do not
+argue with earlier drafts, rejected proposals, or conversational alternatives.
+Remove statements whose only purpose is to negate a discarded approach. Keep
+exclusions only when they define a meaningful scope, safety, or compatibility
+boundary for readers without discussion history. Before finishing, read the
+document independently of the conversation and remove draft rebuttals.
+
+
 Use this skill for practical GameMaker game development. It should help an
 agent understand project structure, resource ownership, GML code, editor/runtime
 constraints, build workflows, and reusable utility patterns.
