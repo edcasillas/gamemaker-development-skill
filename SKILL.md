@@ -87,6 +87,16 @@ GameMaker project.
 `gm-cli`, ResourceTool, GameMaker Manual lookup, and Common Utils are tools this
 skill may use. They are not the scope of the skill by themselves.
 
+### Diagram Validation
+
+Validate every added or modified Mermaid block with a real Mermaid parser before
+finishing; `git diff --check` does not validate diagrams. Check rendering in the
+intended viewer when available and distinguish parsing from visual verification.
+In sequence diagrams, escape literal semicolons as `#59;` or rephrase the label:
+unescaped semicolons can terminate statements. Resolve routine validator
+dependencies in an isolated environment and complete validation rather than
+stopping at a missing package.
+
 ## Optional Companion Skill
 
 For legacy GM4/GM5/GMS1.4 preservation, migration reasoning, MIDI/audio conversion for web export, imported Drag and Drop cleanup, obsolete function cleanup, resource collision handling, and browser migration validation, use the optional companion skill `gamemaker-migration-assistant`.
