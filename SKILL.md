@@ -422,6 +422,11 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 
 ## HTML5 Host and Input Integration
 
+- All web implementations, including prototypes, must use responsive design
+  unless the user explicitly specifies otherwise. Never assume a mobile-only or
+  desktop-only audience. Validate both narrow/mobile and wide/desktop layouts,
+  keeping content readable and controls reachable without clipping or unintended
+  horizontal overflow; verify scrolling when content exceeds the viewport.
 - If browser UI must exist during game loading, make its initial configuration
   available to the HTML host before GML starts. Keep template injection declarative
   (external script references); keep implementation in editable source files.
@@ -447,6 +452,35 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
   on another branch or described in docs is not the checked-out implementation.
   Keep source tests, browser fixtures, IDE runs, exported artifacts and hosted-page
   checks distinct when reporting readiness.
+
+## Browser Persistence Experiments
+
+- Separate API completion, verified readback, page reload, cross-tab visibility,
+  full browser restart, and recovery across compatible uploads. Report only the
+  boundaries actually tested; immediate readback does not establish durability.
+- Distinguish a saved zero from absent, inaccessible, and invalid data. An API
+  assignment without an exception may still be rejected; verify its observable
+  result. In comparative tests, report each backend independently so one success
+  cannot hide another failure.
+- Before asking a human to repeat a failing test, state which competing
+  explanations the next experiment separates and what each outcome would mean.
+  Gather the necessary diagnostics automatically behind simple controls; avoid
+  repeated uploads that only change wording without improving the evidence.
+- Validate the actual hosted iframe at a narrow viewport, including expanded
+  diagnostics and scrolling to the final control. Check host scrolling and input
+  interception separately from content layout. Desktop viewport checks do not
+  prove physical touch behavior.
+- For mobile form prototypes, test focus/blur, keyboard dismissal, zoom recovery,
+  and editing/pasting on a physical device; viewport emulation cannot establish
+  those behaviors. Preserve user zoom. Format codes without breaking caret/deletion,
+  and gate submit by normalized valid length while retaining decoder validation.
+- Show the actionable failure beside the controls. Keep detailed diagnostics
+  reachable and selectable, and preserve distinctions between missing data,
+  mismatched readback, and decoding failure. Never dump unrelated cookies or keys.
+- Match browser research to the mechanism and affected version. Historical
+  partitioning policies, similar bug reports, and current engine source provide
+  hypotheses, not proof of a shipped browser's root cause. Record unsupported
+  conclusions as open questions rather than implementing speculative workarounds.
 
 ## HTML5 Console Triage
 
