@@ -481,6 +481,13 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
   partitioning policies, similar bug reports, and current engine source provide
   hypotheses, not proof of a shipped browser's root cause. Record unsupported
   conclusions as open questions rather than implementing speculative workarounds.
+- For browser clipboard writes, trace the exact trusted DOM event and keep the
+  write synchronous within that user gesture. Gamepad polling, a later engine
+  frame, and simulated DOM events do not establish browser clipboard permission.
+  If pointer capture retargets release events, preserve and match the original
+  `pointerId` and pressed target instead of reconstructing the action from
+  aggregated input state. Verify permission-sensitive behavior in the actual
+  browser/device path; mocks establish event logic only.
 
 ## HTML5 Console Triage
 
