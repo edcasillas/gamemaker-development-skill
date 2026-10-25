@@ -406,6 +406,7 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 
 ## GameMaker Project Hygiene
 
+- In GML, declare and initialize one variable per line. Give each variable a short comment explaining its role, especially instance state in Create events. Keep later assignments on separate lines too; do not pack independent state changes into one statement line.
 - Respect existing project conventions for output folders, targets, and runtime versions.
 - Add concise JSDoc to every new or modified function. State what it does,
   document relevant parameters, and include its return value when applicable.
