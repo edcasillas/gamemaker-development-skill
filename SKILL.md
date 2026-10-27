@@ -187,12 +187,23 @@ development even when Common Utils is not installed.
      content, not mandatory geometry that hides a runtime-generated control
      behind a placeholder. Review every companion GUI object in the feature
      and verify both editor placement and runtime rendering.
+   - Keep reusable GUI controls composable with existing primitives. For
+     example, place a label independently of a textbox so the host can move and
+     style each in the Room Editor. Do not fold a separate visual element into
+     another control's configuration merely to draw it at runtime.
    - Check whether GameMaker IDE validation is required; command-line checks cannot prove every editor/runtime behavior.
    - Before an IDE check, identify the intended GameMaker version and the
      target project window by title. Multiple projects may be open in separate
      instances of the same app. Inspect Feather Messages in that window after
      refreshing changed resources; a successful CLI compile does not establish
      that IDE warnings are clear.
+   - Resolve Feather diagnostics from the exact resource, event, and line shown
+     by the IDE. Open the diagnostic before editing; similar names in another
+     event do not identify the cause. GameMaker flags a second `var` for the
+     same local within one event even inside a nested block. If external edits
+     leave the IDE's copy stale, reload the resource or edit it in the IDE and
+     confirm the Feather counters directly. Keep new reusable code free of
+     Feather errors and warnings.
 3. Choose the right tool for the task:
    - Edit source files directly for narrow GML/docs changes when resource metadata does not need to change.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
