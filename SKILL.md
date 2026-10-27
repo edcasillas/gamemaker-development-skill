@@ -407,6 +407,8 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 ## GameMaker Project Hygiene
 
 - In GML, declare and initialize one variable per line. Give each variable a short comment explaining its role, especially instance state in Create events. Keep later assignments on separate lines too; do not pack independent state changes into one statement line.
+- Put the opening brace of a control block on its statement line. Leave a blank line after a completed block before the next independent statement; keep `else`, `catch`, and `finally` attached to their preceding block. Expand one-line blocks when they hide multiple actions.
+- Before each non-obvious configuration validation, explain where the checked state comes from and what would break if it were accepted. Avoid comments that merely rename the condition or repeat the error message. Document the complete validation contract in the module's owner documentation.
 - Respect existing project conventions for output folders, targets, and runtime versions.
 - Add concise JSDoc to every new or modified function. State what it does,
   document relevant parameters, and include its return value when applicable.
