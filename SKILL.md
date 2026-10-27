@@ -181,7 +181,18 @@ development even when Common Utils is not installed.
 2. Inspect the project shape before changing resources:
    - Read the `.yyp` and relevant resource folders.
    - Prefer existing object, script, room, sprite, option, extension, and datafile patterns.
+   - For room-placed GUI objects, make the control's footprint and appearance
+     visible in the Room Editor. Derive draw and hit bounds from the assigned
+     sprite and instance transform; use instance variables for behavior and
+     content, not mandatory geometry that hides a runtime-generated control
+     behind a placeholder. Review every companion GUI object in the feature
+     and verify both editor placement and runtime rendering.
    - Check whether GameMaker IDE validation is required; command-line checks cannot prove every editor/runtime behavior.
+   - Before an IDE check, identify the intended GameMaker version and the
+     target project window by title. Multiple projects may be open in separate
+     instances of the same app. Inspect Feather Messages in that window after
+     refreshing changed resources; a successful CLI compile does not establish
+     that IDE warnings are clear.
 3. Choose the right tool for the task:
    - Edit source files directly for narrow GML/docs changes when resource metadata does not need to change.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
