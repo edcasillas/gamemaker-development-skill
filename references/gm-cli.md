@@ -88,6 +88,8 @@ Observed during a GameMaker 2026 `operagx` VM compile: `--errors-only` can hide 
 
 Observed with `npx @gamemaker/gm-cli@latest`: a command can still attempt registry/network access even after earlier successful invocations. If the command is required and fails with DNS/registry errors, rerun with approved network access instead of switching to a weaker workflow.
 
+`gm-cli` checks npm for its own updates before processing even `--help` or `--version`. In a network-restricted environment, that check can hang without output. Set `CI=1` to skip the update check; this does not make compilation offline. Run from the project root or pass `--cache-dir` to the established cache so a nested prototype does not try to reinstall GameMaker tools. An expired guest license or missing runtime may still require network access. Diagnose the first visible stage before treating a timeout as a compiler failure.
+
 Shared `run`, `compile`, and `package` flags captured in 2.1.0:
 
 - `[project]`: optional path to the project `.yyp`.
