@@ -66,6 +66,11 @@ different tradeoff:
   cannot be verified through CLI tooling. Before invoking UI automation, state
   the exact UI-only evidence it must provide, batch the minimum interactions,
   and return to non-visual tools.
+- For routine compilation validation, run `gm-cli` against a supported native
+  desktop target. `gm-cli` does not compile HTML5. Do not compensate by opening
+  GameMaker to compile, run, or export HTML5; leave those IDE actions to the
+  user unless they explicitly request UI operation. IDE automation remains
+  appropriate only for genuinely IDE-exclusive evidence.
 
 - `KISS`: solve the problem with the simplest design that is correct and
   maintainable.
@@ -216,7 +221,9 @@ development even when Common Utils is not installed.
 3. Choose the right tool for the task:
    - Edit source files directly for narrow GML/docs changes when resource metadata does not need to change.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
-   - Use `gm-cli` for compile/run/package/manual workflows.
+   - Use `gm-cli` for supported compile/run/package/manual workflows. Validate
+     compile errors with a supported native desktop target; do not request an
+     HTML5 target from `gm-cli`.
    - Use Common Utils only when the project should consume or contribute reusable shared utilities.
    - For GameMaker script assets, prefer one public function per script and
      group related scripts in the correct folder lane so entry points stay easy
@@ -358,6 +365,11 @@ Use `gm-cli` for:
 - Running ResourceTool as MCP when an AI agent needs structured project editing.
 - Searching or reading GameMaker Manual pages from the terminal.
 - Packaging and publishing to GX.Games when explicitly requested.
+
+For projects whose final target is HTML5, compile a supported native desktop
+target with `gm-cli` to catch GML and resource compilation errors. The user
+executes and exports HTML5 manually in GameMaker. Do not launch the IDE merely
+to reproduce that HTML5 step.
 
 Do not use `gm-cli` as a substitute for legacy-source preservation work. For historical Game Maker artifacts, preserve originals and use the active migrated project unless the user explicitly asks otherwise.
 
