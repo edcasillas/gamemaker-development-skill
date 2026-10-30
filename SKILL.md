@@ -58,6 +58,15 @@ it in that repository's docs or agent guidance instead.
 Use these as default decision rules unless the user explicitly asks for a
 different tradeoff:
 
+- Minimize paid tool and UI automation usage. Prefer direct file edits, CLI
+  commands, tests, and purpose-built APIs. Do not use Computer Use or visual UI
+  automation when an equivalent non-visual path can establish the result. Use
+  the GameMaker UI only for IDE-exclusive checks such as Feather diagnostics,
+  Asset Browser visibility, Room Editor presentation, or other behavior that
+  cannot be verified through CLI tooling. Before invoking UI automation, state
+  the exact UI-only evidence it must provide, batch the minimum interactions,
+  and return to non-visual tools.
+
 - `KISS`: solve the problem with the simplest design that is correct and
   maintainable.
 - `DRY` with `Rule of Three`: avoid careless duplication, but do not extract
