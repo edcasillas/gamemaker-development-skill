@@ -318,10 +318,9 @@ Read `references/html5-console-triage.md` before diagnosing browser console nois
 Read `references/common-utils.md` before installing, linking, migrating, or contributing shared GameMaker resources through `edcasillas/gamemaker-common-utils`.
 Read `references/gameanalytics.md` before installing or upgrading the GameAnalytics GameMaker SDK, creating a local defensive facade, configuring credentials, or wiring Common Utils Logging telemetry.
 Read `references/globalstats.md` before installing, upgrading, or integrating a GlobalStats.io GameMaker client, including its controller, asynchronous events, GTD schema, credentials, and optional Common Utils Logging/EventBus wiring.
-Use the Common Utils release CLI when a consumer should export through
-`gm-cli`, serve an HTML export on localhost/LAN, generate a build version, or
-publish an explicitly tested artifact through Butler. Keep export and deploy as
-separate user actions.
+Use the Common Utils release shell script to version and publish an explicitly
+tested export through Butler. Keep export, testing, and publication as separate
+user actions.
 When a project already uses a shared utility family such as Common Utils,
 prefer fixing cross-module integration at the shared-owner layer before adding
 consumer-side workarounds. Keep that guidance generic and reusable rather than
@@ -493,7 +492,7 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - Device-aware prompts follow meaningful input, not connection alone. Held axes,
   neutral releases and drift must not repeatedly override a later keyboard choice.
   Render prompts from current device state instead of caching them at screen creation.
-- Before advising publication, inspect the actual pinned release CLI and launcher,
+- Before advising publication, inspect the actual release script and launcher,
   including supported commands and configuration-path assumptions. A newer workflow
   on another branch or described in docs is not the checked-out implementation.
   Keep source tests, browser fixtures, IDE runs, exported artifacts and hosted-page
