@@ -88,6 +88,14 @@ different tradeoff:
   repeated policy or state-reset steps. Do not stop at extracting one repeated
   line if the subsystem still requires the same semantic preparation in
   multiple places.
+- Treat prototypes as integration consumers of existing shared components.
+  Before creating a button, label, textbox, cursor target, or other reusable UI
+  behavior, search the project and its shared toolbox for the established
+  primitive and use it in the prototype. Consumer-specific appearance or action
+  is not a reason to reimplement input, hover, press/release, drawing lifecycle,
+  event dispatch, or cleanup. If actual prototype use reveals a missing generic
+  capability, improve the shared component and validate that capability through
+  the prototype instead of creating a parallel substitute.
 
 When producing durable documentation, keep it complete but concise. Prefer a
 short `Quickstart`, dependency/API tables when they improve scanability, and

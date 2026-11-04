@@ -292,6 +292,12 @@ Buttons depend on `Core`, `Drawing`, `Logging`, `EventBus`, `Localization`,
 `LayeredGUI`, and `UniversalCursor`. Sprites, fonts, sounds, and button IDs
 remain consumer-owned.
 
+Consumer projects and prototypes extend these button objects rather than
+reimplementing their interaction lifecycle. Project-specific visuals and
+actions remain in a child object or controller. A generally reusable missing
+capability belongs in the shared Buttons module and must be exercised by the
+consumer that exposed the gap.
+
 ### Labels
 
 Resource folders:
