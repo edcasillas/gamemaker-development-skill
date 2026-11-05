@@ -459,6 +459,9 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - Keep inline comments to one short sentence whenever possible. State the rule,
   purpose, or non-obvious reason directly instead of narrating the code or
   expanding a simple constraint into a paragraph.
+- Organize substantial GML events and scripts with `#region` and `#endregion`.
+  Group related responsibilities without creating regions around trivial
+  fragments.
 - Respect existing project conventions for output folders, targets, and runtime versions.
 - Add concise JSDoc to every new or modified function. State what it does,
   document relevant parameters, and include its return value when applicable.
