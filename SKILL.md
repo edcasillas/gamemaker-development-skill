@@ -58,19 +58,17 @@ it in that repository's docs or agent guidance instead.
 Use these as default decision rules unless the user explicitly asks for a
 different tradeoff:
 
-- Minimize paid tool and UI automation usage. Prefer direct file edits, CLI
-  commands, tests, and purpose-built APIs. Do not use Computer Use or visual UI
-  automation when an equivalent non-visual path can establish the result. Use
-  the GameMaker UI only for IDE-exclusive checks such as Feather diagnostics,
-  Asset Browser visibility, Room Editor presentation, or other behavior that
-  cannot be verified through CLI tooling. Before invoking UI automation, state
-  the exact UI-only evidence it must provide, batch the minimum interactions,
-  and return to non-visual tools.
+- Prefer direct file edits, CLI commands, tests, and purpose-built APIs. Do not
+  use Computer Use or visual UI automation unless the user explicitly authorizes
+  it in the current turn. Before an IDE-exclusive check such as Feather
+  diagnostics, Asset Browser visibility, or Room Editor presentation, ask for
+  that authorization. If authorization is not granted, do not open or drive
+  GameMaker.
 - For routine compilation validation, run `gm-cli` against a supported native
   desktop target. `gm-cli` does not compile HTML5. Do not compensate by opening
   GameMaker to compile, run, or export HTML5; leave those IDE actions to the
-  user unless they explicitly request UI operation. IDE automation remains
-  appropriate only for genuinely IDE-exclusive evidence.
+  user unless they explicitly request UI operation. An IDE-exclusive check does
+  not itself authorize UI automation.
 
 - `KISS`: solve the problem with the simplest design that is correct and
   maintainable.
@@ -214,18 +212,17 @@ development even when Common Utils is not installed.
      style each in the Room Editor. Do not fold a separate visual element into
      another control's configuration merely to draw it at runtime.
    - Check whether GameMaker IDE validation is required; command-line checks cannot prove every editor/runtime behavior.
-   - Before an IDE check, identify the intended GameMaker version and the
-     target project window by title. Multiple projects may be open in separate
-     instances of the same app. Inspect Feather Messages in that window after
-     refreshing changed resources; a successful CLI compile does not establish
-     that IDE warnings are clear.
-   - Resolve Feather diagnostics from the exact resource, event, and line shown
-     by the IDE. Open the diagnostic before editing; similar names in another
-     event do not identify the cause. GameMaker flags a second `var` for the
-     same local within one event even inside a nested block. If external edits
-     leave the IDE's copy stale, reload the resource or edit it in the IDE and
-     confirm the Feather counters directly. Keep new reusable code free of
-     Feather errors and warnings.
+   - Ask for explicit authorization before performing an IDE-exclusive check.
+     Identify the intended GameMaker version, target project, and exact UI-only
+     evidence in the authorization request. Perform the check only when the user
+     authorizes it in the current turn.
+   - Resolve user-reported Feather diagnostics from the exact resource, event,
+     and line shown by the IDE. Similar names in another event do not identify
+     the cause. GameMaker flags a second `var` for the same local within one
+     event even inside a nested block. If external edits leave the IDE's copy
+     stale, ask the user to reload the resource and report the displayed Feather
+     counters. A successful CLI compile does not establish that warnings are
+     clear.
 3. Choose the right tool for the task:
    - Edit source files directly for narrow GML/docs changes when resource metadata does not need to change.
    - Use ResourceTool for structured `.yyp` and resource edits when it is safer than manual JSON edits.
@@ -459,6 +456,9 @@ Prefer terminal `read` for agent-visible evidence. Use `open` only when the user
 - In GML, declare and initialize one variable per line. Comment its purpose in concrete terms: for lifecycle flags, state when they change and which later action they guard. A comment that only restates the variable name is useless. Keep later assignments on separate lines too; do not pack independent state changes into one statement line.
 - Put the opening brace of a control block on its statement line. Leave a blank line after a completed block before the next independent statement; keep `else`, `catch`, and `finally` attached to their preceding block. Expand one-line blocks when they hide multiple actions.
 - Before each non-obvious configuration validation, explain where the checked state comes from and what would break if it were accepted. Avoid comments that merely rename the condition or repeat the error message. Document the complete validation contract in the module's owner documentation.
+- Keep inline comments to one short sentence whenever possible. State the rule,
+  purpose, or non-obvious reason directly instead of narrating the code or
+  expanding a simple constraint into a paragraph.
 - Respect existing project conventions for output folders, targets, and runtime versions.
 - Add concise JSDoc to every new or modified function. State what it does,
   document relevant parameters, and include its return value when applicable.

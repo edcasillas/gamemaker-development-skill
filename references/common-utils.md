@@ -536,7 +536,8 @@ git diff --cached --summary
 Expected output includes `create mode 120000 scripts/gmcu_event_bus` and deletions
 for the old local files.
 
-7. Open GameMaker and verify the resource opens through the local path.
+7. Ask for explicit authorization to open GameMaker and verify the resource
+   through the local path. Perform the check only when authorized.
 8. If testing a small IDE edit, confirm it lands in the submodule:
 
 ```sh
@@ -554,7 +555,8 @@ git -C vendor/gamemaker-common-utils status --short
 4. Register the resource in the consumer `.yyp` at the local path GameMaker
    expects.
 5. Replace that local folder with a symlink to the vendor folder.
-6. Validate in GameMaker IDE.
+6. Ask for explicit authorization to validate the resource in GameMaker IDE.
+   Perform the check only when authorized.
 
 ## Validation Commands
 
@@ -565,7 +567,9 @@ git -C vendor/gamemaker-common-utils status --short
 find scripts objects -maxdepth 2 -type l -ls
 ```
 
-Command-line checks do not replace GameMaker IDE validation.
+Command-line checks do not replace GameMaker IDE validation. Ask for explicit
+authorization before operating the IDE, and perform the check only when the
+user authorizes it in the current turn.
 
 ## Roadmap
 
