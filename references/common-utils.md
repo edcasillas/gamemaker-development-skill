@@ -54,6 +54,10 @@ All Common Utils public resources and APIs use `gmcu_` as the first token in
 the name. Macros, enums, and constants use `GMCU_`. For objects, put the
 prefix before `o`, such as `gmcu_o_input_hub`. Do not add unprefixed aliases.
 
+Name boolean functions as the question they answer, using predicates such as
+`is_*`, `has_*`, `can_*`, or `should_*`. The name must make the meaning of
+`true` clear without reading the function body.
+
 ## Module Documentation Standard
 
 Keep the repository README as a concise module index. Each module entry should

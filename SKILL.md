@@ -128,6 +128,9 @@ discard author comments while cleaning up structure.
 Prefer local names that describe the concrete thing being counted or placed.
 Avoid ambiguous names like `_row_count` when the value actually means tile
 count, sprite count, or horizontal repeats.
+Name boolean functions as the question they answer. Prefer predicates such as
+`is_*`, `has_*`, `can_*`, or `should_*`; avoid names that force callers to read
+the implementation to learn what `true` means.
 
 Use this skill when the task involves building, debugging, refactoring,
 documenting, validating, automating, packaging, publishing, or extending a
